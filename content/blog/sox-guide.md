@@ -404,6 +404,50 @@ echo "Processing complete."
 
 {{< lftri animationSpeed=100s >}}
 
+## Part 5: Using SoX in SuperCollider
+
+I have made a [SuperCollider package](https://github.com/madskjeldgaard/sox.quark) that makes it easy to invoke the sox command from SuperCollider.
+
+Open up SuperCollider and evaluate the following line of code to install it:
+```javascript
+Quarks.install("https://github.com/madskjeldgaard/sox.quark")
+```
+
+### Convert single files from sclang
+
+Here are some examples of simple commands you can run
+
+```javascript
+// Normalize
+Sox.normalize("/Users/mads/tapedegrad1.wav", "/Users/mads/tapedegrad1_normalized.wav", (-0.1))
+
+// Split by silence (using default values)
+Sox.splitBySilence("/Users/mads/reallylongfile.wav", "/Users/mads/partOfReallyLongFile.wav")
+
+// Run arbitrary sox command
+Sox.run("inFile.wav", "outFile.wav", "gain", "-3", "pad", "0", "3", "reverb");
+```
+
+### Batch process files from sclang
+
+And here an example of batch-processing a folder of files from within SuperCollider:
+
+```javascript
+(
+var folder = "~/tmp/sounds";
+var folderPath = PathName(folder);
+
+folderPath.filesDo{|file|
+    var inFile = file;
+    var outFile = inFile.pathOnly +/+ PathName(inFile.fileNameWithoutExtension ++ "_normalized" ++ "." ++ inFile.extension);
+    Sox.normalize(inFile.fullPath, outFile.fullPath);
+};
+
+)
+```
+
+{{< lfsine animationSpeed=100s >}}
+
 ## Where to go from here?
 I would highly encourage you to go back and read the SoX manual (`man sox`, remember?) because there really is a plethora of fun and useful things you can do with SoX in a for-loop.
 
