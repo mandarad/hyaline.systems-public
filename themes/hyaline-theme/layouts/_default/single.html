@@ -2,12 +2,6 @@
 <div class="main-content">
   <article class="post">
 
-    {{/* Date */}}
-    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-    {{ $dateHuman := .Date | time.Format ":date_long" }}
-    <i>
-      <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></i>
-
 
 
     {{/* Title */}}
@@ -27,25 +21,32 @@
     {{ $authorLink := .Params.authorlink }}
 
     <!-- Apply the no-animation class to the author link -->
-    <p class="author">By
+    <p class="author">
+      {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+      {{ $dateHuman := .Date | time.Format ":date_long" }}
+      💻 by
       {{ if $authorLink }}
       <a href="{{ $authorLink }}" class="no-animation">{{ $author }}</a>
       {{ else }}
       {{ $author }}
       {{ end }}
 
-      ~
+      on
+      <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>.</i>
+      <i>
+
       {{/* Edit link */}}
       {{/* This uses the .siteSourceCode parameter from the site, if there is one, to link to the source code of this
       post */}}
       {{ with .Site.Params.siteSourceCode }}
       {{ with $.File }}
-      <a class="no-animation" href="{{ $.Site.Params.siteSourceCode }}/content/{{ .Path }}">edit this post</a>.
+      <a class="no-animation" href="{{ $.Site.Params.siteSourceCode }}/edit/main/content/{{ .Path }}">✏️ click here to edit this
+        post</a>.
       {{ end }}
       {{ end }}
     </p>
 
-
+    <br>
 
     {{/* If the user has defined an openingParagraph in the front matter, display it here. */}}
     {{ with .Params.description }}
