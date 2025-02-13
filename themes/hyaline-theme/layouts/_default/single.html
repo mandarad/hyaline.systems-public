@@ -1,18 +1,27 @@
 {{ define "main" }}
 <div class="main-content">
   <article class="post">
+
+    {{/* Date */}}
+    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman := .Date | time.Format ":date_long" }}
+    <i>
+      <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></i>
+
+
+
     {{/* Title */}}
     <h1>{{ .Title }}</h1>
 
     {{/* If any images, embed them */}}
     {{ with .Params.images }}
-      {{ range . }}
-        <img src="{{ . }}" alt="{{ . }}" class="post-image">
-      {{ end }}
+    {{ range . }}
+    <img src="{{ . }}" alt="{{ . }}" class="post-image">
+    {{ end }}
     {{ end }}
 
     {{/* Author. Defined in front matter of post */}}
-    {{/* If there is a link defined in authorlink, wrap it in that.  */}}
+    {{/* If there is a link defined in authorlink, wrap it in that. */}}
 
     {{ $author := .Params.author }}
     {{ $authorLink := .Params.authorlink }}
@@ -20,35 +29,47 @@
     <!-- Apply the no-animation class to the author link -->
     <p class="author">By
       {{ if $authorLink }}
-        <a href="{{ $authorLink }}" class="no-animation">{{ $author }}</a>
+      <a href="{{ $authorLink }}" class="no-animation">{{ $author }}</a>
       {{ else }}
-        {{ $author }}
+      {{ $author }}
+      {{ end }}
+
+      ~
+      {{/* Edit link */}}
+      {{/* This uses the .siteSourceCode parameter from the site, if there is one, to link to the source code of this
+      post */}}
+      {{ with .Site.Params.siteSourceCode }}
+      {{ with $.File }}
+      <a class="no-animation" href="{{ $.Site.Params.siteSourceCode }}/content/{{ .Path }}">edit this post</a>.
+      {{ end }}
       {{ end }}
     </p>
 
-    {{/* Date */}}
-    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-    {{ $dateHuman := .Date | time.Format ":date_long" }}
-    <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+
 
     {{/* If the user has defined an openingParagraph in the front matter, display it here. */}}
     {{ with .Params.description }}
     <p>
       <i>{{ . }}</i>
-      </p>
+    </p>
     {{ end }}
 
     <!-- Apply the no-animation class to the Table of Contents links -->
     <div class="toc no-animation">
       <b class="toc">Table of Contents</b>
       {{ if .Params.toc }}
-        {{ .TableOfContents }}
+      {{ .TableOfContents }}
       {{ end }}
     </div>
 
     {{/* The content of the post */}}
     {{ .Content }}
-    {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+    {{/* {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }} */}}
+
+    {{/* tags */}}
+    <p class="tags">
+      {{ range .Params.tags }} <a href="/tags/{{ . | urlize }}">#{{ . }}</a> {{ end }}
+    </p>
 
   </article>
 </div>

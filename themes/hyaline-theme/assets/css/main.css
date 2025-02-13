@@ -29,10 +29,12 @@
 
 :root {
   --bg-color: rgb(200, 201, 197);
+  /* --bg-color2: rgba(80, 99, 168, 0.5); */
+  --bg-color2: rgba(80, 99, 168, 0.125);
   --text-color: rgb(80, 99, 168);
   --link-color: var(--text-color);
-  --link-hover-color: #00f;
-  --border-color: #ddd;
+  --link-hover-color: #5A51A8;
+  --border-color: #517FA8;
 
   --glow-color: rgba(255, 154, 128, 0.9);
   /* Adjusted to match text color */
@@ -77,9 +79,11 @@ article {
 
 /* Style the article to have a max-width and center it */
 .main-content article {
-  max-width: 800px; /* Adjust the max-width as needed */
+  max-width: 800px;
+  /* Adjust the max-width as needed */
   width: 100%;
-  padding: 20px; /* Optional: Add some padding */
+  padding: 20px;
+  /* Optional: Add some padding */
   box-sizing: border-box;
 }
 
@@ -90,11 +94,11 @@ img {
 
 a {
   color: var(--link-color);
-  font-weight: 600;
-  /* Add transition for color */
+  font-weight: 400;
   transition: color 0.3s ease-in-out;
-
   animation: glow 10s infinite alternate;
+
+  /* text-decoration: none; */
 }
 
 a:hover {
@@ -125,6 +129,7 @@ a:hover {
   transition: none !important;
 }
 
+
 /* Target TOC links specifically */
 .toc a {
   animation: none !important;
@@ -141,43 +146,80 @@ h2 {
 }
 
 
+code span{
+  text-wrap: wrap;
+}
+
+div.highlight
+{
+  /* padding: 0./*  */5em; */
+  text-wrap: wrap;
+}
+
+pre {
+  padding: 0.25em;
+  margin: 1em;
+}
+
+.highlight {
+  /* padding: 0.5em; */
+  margin: 0;
+  border-radius: 0.5em;
+  background-color: var(--bg-color2);
+  border: 1px solid var(--link-hover-color);
+}
+
+
 /* Menu container */
 .menu {
-  background-color: var(--menu-bg-color); /* Use CSS variable for background color */
-  padding: 10px 0; /* Padding for the menu container */
+  background-color: var(--menu-bg-color);
+  /* Use CSS variable for background color */
+  padding: 10px 0;
+  /* Padding for the menu container */
 }
 
 /* Menu list */
 .menu ul {
-  list-style: none; /* Remove default list styling */
+  list-style: none;
+  /* Remove default list styling */
   margin: 0;
   padding: 0;
-  display: flex; /* Display list items in a row */
-  justify-content: center; /* Center the menu items horizontally */
+  display: flex;
+  /* Display list items in a row */
+  justify-content: center;
+  /* Center the menu items horizontally */
 }
 
 /* Menu items */
 .menu li {
-  margin: 0 10px; /* Space between menu items */
+  margin: 0 10px;
+  /* Space between menu items */
 }
 
 /* Menu links */
 .menu a {
-  color: var(--menu-text-color); /* Use CSS variable for text color */
-  text-decoration: none; /* Remove underline from links */
-  padding: 14px 20px; /* Padding for each menu item */
-  display: block; /* Make the menu items block elements */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  color: var(--menu-text-color);
+  /* Use CSS variable for text color */
+  text-decoration: none;
+  /* Remove underline from links */
+  padding: 14px 20px;
+  /* Padding for each menu item */
+  display: block;
+  /* Make the menu items block elements */
+  transition: background-color 0.3s ease;
+  /* Smooth transition for hover effect */
 }
 
 /* Hover state for menu items */
 .menu a:hover {
-  background-color: var(--menu-hover-bg-color); /* Use CSS variable for hover background color */
+  background-color: var(--menu-hover-bg-color);
+  /* Use CSS variable for hover background color */
 }
 
 /* Active menu item */
 .menu a.active {
-  background-color: var(--menu-active-bg-color); /* Use CSS variable for active background color */
+  background-color: var(--menu-active-bg-color);
+  /* Use CSS variable for active background color */
 }
 
 .footer {
@@ -192,12 +234,17 @@ h2 {
 /* Responsive menu (optional) */
 @media (max-width: 768px) {
   .menu ul {
-    flex-direction: column; /* Stack menu items vertically on small screens */
+    flex-direction: column;
+    /* Stack menu items vertically on small screens */
   }
+
   .menu li {
-    margin: 5px 0; /* Adjust margin for vertical layout */
+    margin: 5px 0;
+    /* Adjust margin for vertical layout */
   }
+
   .menu a {
-    text-align: center; /* Center-align text on small screens */
+    text-align: center;
+    /* Center-align text on small screens */
   }
 }

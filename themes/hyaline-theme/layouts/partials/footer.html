@@ -6,7 +6,7 @@
   {{ end }}
 
   <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All Rights Reserved.</p>
-  <p><a href="https://github.com/madskjeldgaard/exformal-hugo-theme" target="_blank" rel="noopener">Open source web design by Mads Kjeldgaard</a>.
+  <p><a href="https://github.com/madskjeldgaard/hyaline.systems-public" target="_blank" rel="noopener">Open source web design by Mads Kjeldgaard</a>.
   </p>
 
   {{/* RSS */}}
@@ -18,6 +18,17 @@
 
   {{ end -}}
 
-  {{/* <ul class="footer-links">{{partial "socials.html"}}</ul> */}}
+  {{/* if site.Params.social.instagram */}}
+  {{ with .Site.Params.social.mastodon -}}
+  <p>
+    <a href="{{ . }}" target="_blank" rel="noopener">Follow on Mastodon</a>
+  </p>
+  {{ end -}}
+
+
+
+
+
+
 
 </div>

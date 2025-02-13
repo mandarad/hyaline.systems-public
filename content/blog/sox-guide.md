@@ -7,7 +7,7 @@ authorlink = "https://madskjeldgaard.dk"
 tags = ['sox', 'guide', 'audioprocessing', 'bash', 'cli']
 toc = true
 description = "SoX is a free command line audio processing tool with a text-based interface that let's you perform powerful audio operations by typing just a few words in your computer's terminal. It is a popular tool for managing large collections of audio files, splitting audio files by silence and batch processing (eg. normalizing an entire folder of drum sounds in a matter of seconds), but really it is much more than that. If you learn to use SoX you are guaranteed to save enormous amounts of time working with audio files. This guide will help you get started."
-images = ["/soxman.png"]
+images = ["/tapemachine.jpg"]
 +++
 
 ## Part 0: About this guide
@@ -20,11 +20,11 @@ This guide is open source, and you can contribute changes, modifications and que
 
 ### Support
 
-If you found this guide useful, [please consider making a donation to show your support and/or say thanks :)](https://ko-fi.com/madskjeldgaard). All contributions are greatly appreciated and help motivate me to make more stuff like this.
+Writing this guide took a long time. If you found it useful, [please consider making a donation to show your support and/or say thanks :)](https://ko-fi.com/madskjeldgaard). All contributions are greatly appreciated and help motivate me to make more stuff like this.
 
 {{< kofi >}}
 
-<!-- {{< lfsine >}} -->
+{{< lftri >}}
 
 ## Part 1: Getting started
 
@@ -33,26 +33,26 @@ If you found this guide useful, [please consider making a donation to show your 
 #### MacOS
 Using the [Homebrew package manager](https://brew.sh/):
 
-```bash
+```sh
 brew install sox
 ```
 #### Windows
 
 Using the Chocolatey package manager
 
-```bash
+```sh
 choco install sox.portable
 ```
 
 #### Ubuntu / Debian
 
-```bash
+```sh
 sudo apt install sox
 ```
 
 #### Arch / Manjaro
 
-```bash
+```sh
 sudo pacman -S sox
 ```
 
@@ -61,7 +61,11 @@ sudo pacman -S sox
 #### The manual
 <!-- ![sox manual](/sox-man.png) -->
 
-To read the manual, open up a terminal and type `man sox`.
+To read the manual, open up a terminal and type: 
+
+```sh
+man sox
+```
 
 The manual is the best place to find information and example usages for SoX.
 
@@ -73,6 +77,16 @@ And backwards one page by pressing `ctrl-b`
 
 Exit the manual by pressing `q`
 
+#### Supported file types and formats
+
+By default, SoX supports pretty much every file type you can imagine. There may be variations, depending on what operating system you are on (some might not support mp3 for example). 
+
+See the audio formats manual for more information:
+
+```sh
+man soxformats
+```
+
 #### Audio recorder
 
 SoX includes a very handy way of recording audio using the `rec` command.
@@ -81,7 +95,7 @@ The simplest use is to type `rec filename` which will start recording from the d
 
 Example use:
 
-```bash
+```sh
 rec hello.wav
 ```
 
@@ -92,29 +106,40 @@ You can specify a predefined length of the recording like this: `rec hello.wav t
 Similarly, playing audio is also possible using the command `play`
 
 Example use:
-```bash
+```sh
 play hello.wav
 ```
 Note that both play and rec can be used with SoX's many included effects.
 
 Playing the above example at half speed with a flanger at the end is as simple as
 
-```bash
+```sh
 play hello.wav speed 0.5 flanger
 ```
+
+#### Audio file information
+
+Another helpful command bundled with sox is
+
+```sh
+soxi <path-to-audiofile>
+```
+This will display information about an audio file.
+
 ### Command line basics
 
 You do not have to have a lot of command line experience to use SoX but there is a few basic commands that will make it easier for you to navigate your computer in the command line.
 
-- `pwd` - see path to directory you are currently in
-- `ls` - see files in current directory
-- `cd /some/path` - move to __/some/path__
-- `cd ..` - move up one folder
-- `cd ~` - move to home folder
+- **pwd** - see path to directory you are currently in
+- **ls** - see files in current directory
+- **cd /some/path** - move to _/some/path_
+- **cd ..** - move up one folder
+- **cd ~** - move to home folder
 
 As well as commands, here are some essential keyboard shortcuts:
-• up/down - scroll through previous commands (easy way to see / reuse previous work)
-• ctrl-c - cancel/abort the program (a sort of panic button)
+
+- up/down - scroll through previous commands (easy way to see / reuse previous work)
+- ctrl-c - cancel/abort the program (a sort of panic button)
 
 Sometimes, a simple way of using `cd` is to drag and drop a folder from your computer onto your terminal, this will in most cases paste the full path.
 
@@ -124,13 +149,13 @@ Our main interface for sox in this tutorial will be the `sox` command. The basic
 
 The basic command we will use will thus look like this:
 
-```bash
+```sh
 sox inputfile outputfile effect parameters
 ```
 
 If your input or output file contains spaces in the file name, you should wrap the path to it in quotation marks like this:
 
-```bash
+```sh
 sox "/in/sound.wav" "out/newsound.wav" effect param1
 ```
 
@@ -150,7 +175,7 @@ First of all, we need some audio to operate on. I would recommend recording a qu
 
 Record to the file idiot.wav for 10 seconds:
 
-```bash
+```sh
 rec idiot.wav trim 0:0 0:10
 ```
 
@@ -158,7 +183,7 @@ Once SoX is done recording, it will post a "done" message.
 
 Moving on, let us test the file we just recorded
 
-```bash
+```sh
 play idiot.wav
 ```
 
@@ -168,7 +193,7 @@ You should now hear yourself doing something silly in front of your computer a f
 
 To convert this to something else, we need to invoke the `sox` command now, providing it with an input file name, an output file name and a chain of effects. In this example, I will add a silly effects chain consisting of reversing the audio -> flanger (2ms delay) -> playback speed 50% (0.5) -> reverb. The output of this operation will be saved in the file `art.wav`
 
-```bash
+```sh
 sox idiot.wav art.wav reverse flanger 2 speed 0.5 reverb
 ```
 
@@ -176,13 +201,13 @@ If you execute the command `ls` now, you should in your directory see both the f
 
 Just to be sure, we can test our output file.
 
-```bash
+```sh
 play art.wav
 ```
 
 Now, we would not be proper command line tape musicians if we felt satisfied after 1 manipulation to the original recording, so let us continue our sonic journey by transforming the `art.wav` file further, this time we will time stretch to twice the length (factor 2), reverse the audio again and add some reverb. Just to make sure we do not lose too much of our audio level, we will normalize the output to -0.1db as well finally saving the result in the file `art2.wav`
 
-```bash
+```sh
 sox art.wav art2.wav stretch 2 reverse reverb norm -0.1
 ```
 
@@ -211,7 +236,7 @@ In the manual, `silence` is defined like this:
 
 The parameters are stringed together after the `silence` keyword in the sox command like this:
 ```bash
-sox infile.wav outfile.wav silence above-periods duration threshold
+sox infile.wav outfile.wav silence <above-periods> <duration> <threshold>
 ```
 
 ### Trimming silence from beginning and end of one file
@@ -237,8 +262,7 @@ To do this we need to chain the `restart` pseudoeffect at the end of our command
 
 Our final command for chopping files by silence will then end up looking like this:
 ```bash
-sox infile.wav outfile.wav silence 1 0.1 1% 1 0.1 1% : \
-newfile : restart
+sox infile.wav outfile.wav silence 1 0.1 1% 1 0.1 1% : newfile : restart
 ```
 ### Chopping three bursts
 
@@ -251,8 +275,7 @@ The sound file is called threebursts.wav and can be [downloaded here](/audio/thr
 To split the soundfile into three seperate files containing the bursts (without the silence in between), we simply execute the command
 
 ```bash
-sox threebursts.wav burst_num.wav silence 1 0.1 1% 1 0.1 1% : \
-newfile : restart
+sox threebursts.wav burst_num.wav silence 1 0.1 1% 1 0.1 1% : newfile : restart
 ```
 
 which will produce sound files called "burst_num001.wav", "burst_num002.wav" etc.
@@ -319,10 +342,70 @@ for file in *.wav; do sox "$file" -b 16 "16bit_$file"; done
 ### Trim silence from all files
 
 ```bash
-for file in *.wav; do sox "$file"  
+for file in *.wav; do sox "$file" "nosilence_$file" silence 1 0.1 1% 1 0.1 1%; done
+```
+### Making a bash script
+
+If you find yourself repeating a command or for-loop a lot, it can be benefitial to put it in a bash script. 
+This will make it easy to reuse, and we can even add nice extra features like file type detection etc.
+
+The script below is an example of a bash script that runs sox over all files of type mp3, wav, flac and aiff, and on each one runs the sox command to normalize each one of them.
+
+To use it, save it to a file. For example: *batchnormalize.sh*.
+
+Then, to allow your user to run the script, run:
+
+```sh
+chmod +x batchnormalize.sh
 ```
 
+After this, you can run it using
 
+```bash
+./batchnormalize.sh <path-to-folder>
+```
+Here are the contents of the script:
+
+```bash 
+#!/bin/bash
+
+# This script runs sox on all file types mentioned below, and normalizes each file to the level -0.1 dB
+
+# Check if a folder path is provided as an argument
+if [ -z "$1" ]; then
+  echo "Usage: $0 <folder_path>"
+  exit 1
+fi
+
+# Define the prefix for output files
+prefix="normalized_"
+
+# Navigate to the specified folder
+cd "$1" || { echo "Folder not found: $1"; exit 1; }
+
+# Define the file suffixes to search for (both lowercase and uppercase)
+suffixes=("mp3" "wav" "flac" "aiff" "MP3" "WAV" "FLAC" "AIFF")
+
+# Loop through each suffix and process the files
+for suffix in "${suffixes[@]}"; do
+  for file in *."$suffix"; do
+    # Check if the file exists (to avoid processing non-matching patterns)
+    if [ -f "$file" ]; then
+      OUTFILE="${prefix}${file}"
+      echo "[sox] Processing file ${file}. Output: ${OUTFILE}"
+      # Run the sox command and add the prefix to the output file
+      sox "$file" "$OUTFILE" norm -0.1
+    fi
+  done
+done
+
+echo "Processing complete."
+```
+
+{{< lftri animationSpeed=100s >}}
 
 ## Where to go from here?
 I would highly encourage you to go back and read the SoX manual (`man sox`, remember?) because there really is a plethora of fun and useful things you can do with SoX in a for-loop.
+
+
+{{< kofi >}}

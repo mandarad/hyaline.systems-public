@@ -1,4 +1,7 @@
-<link rel="stylesheet" href="/css/syntax.css">
+{{- $syntaxCSS := resources.Get "css/syntax.css" | minify -}}
+<style>
+	{{ $syntaxCSS.Content | safeCSS }}
+</style>
 
 {{- with resources.Get "css/main.css" }}
   {{- if eq hugo.Environment "development" }}

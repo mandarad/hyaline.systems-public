@@ -3,11 +3,23 @@ languageCode = 'en-us'
 title = 'hyaline.systems'
 theme = "hyaline-theme"
 
+pygmentsCodefences = true
+pygmentsStyle = "nord"
+
+
+[params.social]
+# instagram = "https://instagram.com/madskjeld"
+mastodon = "https://mastodon.social/@hyalinesystems"
+# bandcamp = "https://mads-kjeldgaard.bandcamp.com/"
+github = "https://github.com/hyaline-systems"
+
 [outputs]
 home = ["html", "rss"]
 
 # Site parameters
 [params]
+
+siteSourceCode = "https://github.com/madskjeldgaard/hyaline.systems-public"
 
 # Sub title
 subtitle = ''
@@ -27,3 +39,12 @@ identifier = "blog"
 name       = "blog"
 url        = "/blog"
 weight = 2
+
+
+# Minify all output
+[minify]
+minifyOutput = true
+
+[module]
+  [[module.imports]]
+    path = "github.com/UtkarshVerma/hugo-modules/responsive-images"

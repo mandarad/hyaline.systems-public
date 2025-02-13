@@ -1,16 +1,3 @@
-{{/*
-  Shortcode to generate a triangle wave animation using SVG and CSS.
-
-  Usage:
-  {{< triangle-wave >}}
-  {{< triangle-wave animationSpeed="30s" strokeColor="#5063A8" strokeWidth="5" >}}
-
-  Parameters:
-  - animationSpeed: The speed of the triangle wave animation. Default is "30s".
-  - strokeColor: The color of the triangle wave. Default is "#5063A8".
-  - strokeWidth: The thickness of the triangle wave. Default is "5".
-*/}}
-
 {{ $animationSpeed := .Get "animationSpeed" | default "30s" }}
 {{ $strokeColor := .Get "strokeColor" | default "#5063A8" }}
 {{ $strokeWidth := .Get "strokeWidth" | default "5" }}
@@ -18,6 +5,7 @@
 
 <style>
 #{{ $uniqueID }} .triangle-wave-container {
+  padding: 1em 0;
   position: relative;
   width: 100%;
   overflow: hidden;
@@ -33,7 +21,7 @@
   width: 50%;
 }
 
-#{{ $uniqueID } .triangle-wave path {
+#{{ $uniqueID }} .triangle-wave path {
   stroke: {{ $strokeColor }} !important;
   stroke-width: {{ $strokeWidth }};
   stroke-dasharray: 10;

@@ -19,7 +19,9 @@ authors = [
   {name = 'Name of author', homepage = 'Website of author'}
 ]
 
-markup.highlight.noClasses=false
+# markup.highlight.noClasses=false
+pygmentsCodefences = true
+pygmentsStyle = "pygments"
 
 # If the theme has a single author
 [author]
