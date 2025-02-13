@@ -53,10 +53,10 @@ body {
   font-weight: 400;
   font-optical-sizing: auto;
   font-size: 18px;
-  line-height: 1.75;
+  /* line-height: 1.5; */
 
   /* Slight increase in letter spacing for readability */
-  /* letter-spacing: 0.75px; */
+  letter-spacing: 0.01em;
 }
 
 .front-page {

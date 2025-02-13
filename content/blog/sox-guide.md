@@ -24,7 +24,7 @@ If you found this guide useful, [please consider making a donation to show your 
 
 {{< kofi >}}
 
-{{< lfsquare >}}
+<!-- {{< lfsine >}} -->
 
 ## Part 1: Getting started
 
@@ -59,7 +59,7 @@ sudo pacman -S sox
 ### What's included
 
 #### The manual
-![sox manual](/sox-man.png)
+<!-- ![sox manual](/sox-man.png) -->
 
 To read the manual, open up a terminal and type `man sox`.
 
@@ -242,7 +242,7 @@ newfile : restart
 ```
 ### Chopping three bursts
 
-![alt](/img/small/threebursts.png)
+<!-- ![alt](/img/small/threebursts.png) -->
 
 As an example of the above, let us have a look at a sound file containing three short noise bursts.
 

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/css/syntax.css">
+
 {{- with resources.Get "css/main.css" }}
   {{- if eq hugo.Environment "development" }}
     <link rel="stylesheet" href="{{ .RelPermalink }}">

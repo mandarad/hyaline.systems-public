@@ -19,6 +19,8 @@ authors = [
   {name = 'Name of author', homepage = 'Website of author'}
 ]
 
+markup.highlight.noClasses=false
+
 # If the theme has a single author
 [author]
   name = 'Your name'
