@@ -44,7 +44,3 @@ weight = 2
 # Minify all output
 [minify]
 minifyOutput = true
-
-[module]
-  [[module.imports]]
-    path = "github.com/UtkarshVerma/hugo-modules/responsive-images"
