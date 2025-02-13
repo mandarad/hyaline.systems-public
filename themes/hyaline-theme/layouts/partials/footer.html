@@ -1,1 +1,23 @@
-{{/* <p>Copyright {{ now.Year }}. All rights reserved.</p> */}}
+<div class="footer">
+
+  {{/* if footerText is defined in the site, use that text */}}
+  {{ if .Site.Params.footerText }}
+  <p>{{ .Site.Params.footerText }}</p>
+  {{ end }}
+
+  <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All Rights Reserved.</p>
+  <p><a href="https://github.com/madskjeldgaard/exformal-hugo-theme" target="_blank" rel="noopener">Open source web design by Mads Kjeldgaard</a>.
+  </p>
+
+  {{/* RSS */}}
+  {{ with .OutputFormats.Get "rss" -}}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  <p>
+  <a href="{{ .Permalink }}" target="_blank" rel="noopener">RSS feed.</a>
+  </p>
+
+  {{ end -}}
+
+  {{/* <ul class="footer-links">{{partial "socials.html"}}</ul> */}}
+
+</div>

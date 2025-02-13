@@ -1,10 +1,55 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
+<div class="main-content">
+  <article class="post">
+    {{/* Title */}}
+    <h1>{{ .Title }}</h1>
 
-  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := .Date | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+    {{/* If any images, embed them */}}
+    {{ with .Params.images }}
+      {{ range . }}
+        <img src="{{ . }}" alt="{{ . }}" class="post-image">
+      {{ end }}
+    {{ end }}
 
-  {{ .Content }}
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+    {{/* Author. Defined in front matter of post */}}
+    {{/* If there is a link defined in authorlink, wrap it in that.  */}}
+
+    {{ $author := .Params.author }}
+    {{ $authorLink := .Params.authorlink }}
+
+    <!-- Apply the no-animation class to the author link -->
+    <p class="author">By
+      {{ if $authorLink }}
+        <a href="{{ $authorLink }}" class="no-animation">{{ $author }}</a>
+      {{ else }}
+        {{ $author }}
+      {{ end }}
+    </p>
+
+    {{/* Date */}}
+    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman := .Date | time.Format ":date_long" }}
+    <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+
+    {{/* If the user has defined an openingParagraph in the front matter, display it here. */}}
+    {{ with .Params.description }}
+    <p>
+      <i>{{ . }}</i>
+      </p>
+    {{ end }}
+
+    <!-- Apply the no-animation class to the Table of Contents links -->
+    <div class="toc no-animation">
+      <b class="toc">Table of Contents</b>
+      {{ if .Params.toc }}
+        {{ .TableOfContents }}
+      {{ end }}
+    </div>
+
+    {{/* The content of the post */}}
+    {{ .Content }}
+    {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+
+  </article>
+</div>
 {{ end }}

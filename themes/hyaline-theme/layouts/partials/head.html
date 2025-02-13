@@ -4,3 +4,26 @@
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}
 {{ partialCached "head/fonts.html" . }}
+
+{{ $baseURL := .Site.BaseURL }}
+{{ $title := .Title | default .Site.Title }}
+{{ $description := .Params.description | default .Site.Params.description }}
+{{ $image := first 1 (.Params.images | default (slice "/default-some.jpg")) }}
+{{ $author := .Params.author | default .Site.Author.name }}
+
+<!-- Open Graph meta tags -->
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:image" content="{{ $baseURL }}{{ $image }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="article:author" content="{{ $author }}">
+
+<!-- Twitter Card meta tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $baseURL }}{{ $image }}">
+<meta name="twitter:site" content="@your_twitter_handle">
+<meta name="twitter:creator" content="@your_twitter_handle">

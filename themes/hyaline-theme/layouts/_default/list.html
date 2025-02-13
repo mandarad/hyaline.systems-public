@@ -1,8 +1,20 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+
+<div class="main-content">
+  <article>
+
+    <h1>{{ .Title }}</h1>
+
+    <ul>
+      {{ range .Pages }}
+        <li>
+          <!-- Insert the date before the title -->
+          <b><time datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>:</b>
+          <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        </li>
+      {{ end }}
+    </ul>
+  </article>
+</div>
+
 {{ end }}

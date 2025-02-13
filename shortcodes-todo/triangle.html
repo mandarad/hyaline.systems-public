@@ -1,0 +1,64 @@
+{{/*
+  Shortcode to generate a triangle wave animation using SVG and CSS.
+
+  Usage:
+  {{< triangle-wave >}}
+  {{< triangle-wave animationSpeed="30s" strokeColor="#5063A8" strokeWidth="5" >}}
+
+  Parameters:
+  - animationSpeed: The speed of the triangle wave animation. Default is "30s".
+  - strokeColor: The color of the triangle wave. Default is "#5063A8".
+  - strokeWidth: The thickness of the triangle wave. Default is "5".
+*/}}
+
+{{ $animationSpeed := .Get "animationSpeed" | default "30s" }}
+{{ $strokeColor := .Get "strokeColor" | default "#5063A8" }}
+{{ $strokeWidth := .Get "strokeWidth" | default "5" }}
+{{ $uniqueID := (printf "trianglewave-%d" (now.UnixNano)) }}
+
+<style>
+#{{ $uniqueID }} .triangle-wave-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+#{{ $uniqueID }} .triangle-wave-wrapper {
+  display: flex;
+  width: 200%;
+  animation: move-triangle-wave-{{ $uniqueID }} {{ $animationSpeed }} linear infinite;
+}
+
+#{{ $uniqueID }} .triangle-wave {
+  width: 50%;
+}
+
+#{{ $uniqueID } .triangle-wave path {
+  stroke: {{ $strokeColor }} !important;
+  stroke-width: {{ $strokeWidth }};
+  stroke-dasharray: 10;
+  stroke-linecap: round;
+}
+
+@keyframes move-triangle-wave-{{ $uniqueID }} {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+</style>
+
+<div id="{{ $uniqueID }}">
+  <div class="triangle-wave-container">
+    <div class="triangle-wave-wrapper">
+      <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
+        <path class="triangle-wave" d="M0 100 L100 0 L200 100 L300 0 L400 100 L500 0 L600 100 L700 0 L800 100 L900 0 L1000 100 L1100 0 L1200 100" stroke="{{ $strokeColor }}" stroke-width="{{ $strokeWidth }}" fill="none"/>
+      </svg>
+      <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
+        <path class="triangle-wave" d="M0 100 L100 0 L200 100 L300 0 L400 100 L500 0 L600 100 L700 0 L800 100 L900 0 L1000 100 L1100 0 L1200 100" stroke="{{ $strokeColor }}" stroke-width="{{ $strokeWidth }}" fill="none"/>
+      </svg>
+    </div>
+  </div>
+</div>

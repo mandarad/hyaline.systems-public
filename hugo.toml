@@ -3,6 +3,9 @@ languageCode = 'en-us'
 title = 'hyaline.systems'
 theme = "hyaline-theme"
 
+[outputs]
+home = ["html", "rss"]
+
 # Site parameters
 [params]
 
@@ -11,3 +14,16 @@ subtitle = ''
 
 # Description
 description = ''
+
+# Menu
+[[menu.main]]
+identifier = "hyaline.systems"
+name       = "⊂(◉‿◉)つ"
+url        = "/"
+weight = 1
+
+[[menu.main]]
+identifier = "blog"
+name       = "blog"
+url        = "/blog"
+weight = 2

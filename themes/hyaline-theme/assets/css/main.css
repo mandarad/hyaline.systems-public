@@ -1,3 +1,32 @@
+/* Include fonts from fonts/Source_Code_Pro  */
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("../fonts/Source_Code_Pro/SourceCodePro-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("../fonts/Source_Code_Pro/SourceCodePro-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("../fonts/Source_Code_Pro/SourceCodePro-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("../fonts/Source_Code_Pro/SourceCodePro-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
 :root {
   --bg-color: rgb(200, 201, 197);
   --text-color: rgb(80, 99, 168);
@@ -7,21 +36,27 @@
 
   --glow-color: rgba(255, 154, 128, 0.9);
   /* Adjusted to match text color */
-  --glow-color-strong: rgba(80, 99, 168, 1.0);
+  --glow-color-strong: rgba(80, 99, 168, 0.25);
   /* Stronger glow color */
+
+  --menu-bg-color: --bg-color;
+  --menu-text-color: #444753;
+  --menu-hover-bg-color: --bg-color;
+  --menu-active-bg-color: #7EA851;
 }
 
 body {
   color: var(--text-color);
   background-color: var(--bg-color);
 
-  font-family: "Raleway", sans-serif;
+  font-family: "Source Code Pro", sans-serif;
+  font-weight: 400;
   font-optical-sizing: auto;
   font-size: 18px;
   line-height: 1.75;
 
   /* Slight increase in letter spacing for readability */
-  letter-spacing: 0.75px;
+  /* letter-spacing: 0.75px; */
 }
 
 .front-page {
@@ -34,13 +69,32 @@ article {
   margin: 1em;
 }
 
+/* Add styles for the main content container */
+.main-content {
+  display: flex;
+  justify-content: center;
+}
+
+/* Style the article to have a max-width and center it */
+.main-content article {
+  max-width: 800px; /* Adjust the max-width as needed */
+  width: 100%;
+  padding: 20px; /* Optional: Add some padding */
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 a {
   color: var(--link-color);
   font-weight: 600;
   /* Add transition for color */
   transition: color 0.3s ease-in-out;
 
-  animation: glow 2.5s infinite alternate;
+  animation: glow 10s infinite alternate;
 }
 
 a:hover {
@@ -53,27 +107,97 @@ a:hover {
 
 @keyframes glow {
   0% {
-    text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color), 0 0 15px var(--glow-color);
+    text-shadow: 0 0 2px var(--glow-color), 0 0 10px var(--glow-color), 0 0 15px var(--glow-color);
   }
 
   50% {
-    text-shadow: 0 0 10px var(--glow-color-strong), 0 0 20px var(--glow-color-strong), 0 0 30px var(--glow-color-strong);
+    text-shadow: 0 0 3px var(--glow-color-strong), 0 0 10px var(--glow-color-strong), 0 0 12px var(--glow-color-strong);
   }
 
   100% {
-    text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color), 0 0 15px var(--glow-color);
+    text-shadow: 0 0 2px var(--glow-color), 0 0 10px var(--glow-color), 0 0 5px var(--glow-color);
   }
 }
 
+/* Add this at the end of your CSS file */
+.no-animation {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Target TOC links specifically */
+.toc a {
+  animation: none !important;
+  transition: none !important;
+}
 
 h1 {
   font-size: 2em;
-  font-style: italic;
+  /* font-style: italic; */
 }
 
 h2 {
-  font-style: italic;
+  /* font-style: italic; */
 }
 
-/* Mobile */
-@media (max-width: 768px) {}
+
+/* Menu container */
+.menu {
+  background-color: var(--menu-bg-color); /* Use CSS variable for background color */
+  padding: 10px 0; /* Padding for the menu container */
+}
+
+/* Menu list */
+.menu ul {
+  list-style: none; /* Remove default list styling */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Display list items in a row */
+  justify-content: center; /* Center the menu items horizontally */
+}
+
+/* Menu items */
+.menu li {
+  margin: 0 10px; /* Space between menu items */
+}
+
+/* Menu links */
+.menu a {
+  color: var(--menu-text-color); /* Use CSS variable for text color */
+  text-decoration: none; /* Remove underline from links */
+  padding: 14px 20px; /* Padding for each menu item */
+  display: block; /* Make the menu items block elements */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover state for menu items */
+.menu a:hover {
+  background-color: var(--menu-hover-bg-color); /* Use CSS variable for hover background color */
+}
+
+/* Active menu item */
+.menu a.active {
+  background-color: var(--menu-active-bg-color); /* Use CSS variable for active background color */
+}
+
+.footer {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 10px;
+  line-height: 1.0;
+  font-size: 0.8em;
+}
+
+/* Responsive menu (optional) */
+@media (max-width: 768px) {
+  .menu ul {
+    flex-direction: column; /* Stack menu items vertically on small screens */
+  }
+  .menu li {
+    margin: 5px 0; /* Adjust margin for vertical layout */
+  }
+  .menu a {
+    text-align: center; /* Center-align text on small screens */
+  }
+}

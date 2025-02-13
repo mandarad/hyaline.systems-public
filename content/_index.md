@@ -5,7 +5,7 @@ draft: false
 ---
 
 
-{{< sinewave animationSpeed="20s" >}}
+{{< lfsine animationSpeed="20s" >}}
 
 ## hyaline.systems*
 
@@ -29,9 +29,9 @@ Feel like getting in touch?
 
 Please do, we'd love to hear from you! ⊂(◉‿◉)つ
 
-{{< cloakemail "hello@hyaline.systems" >}}.
+{{< cloakemail "hello@hyaline.systems" >}}
 
-{{< sinewave animationSpeed="9.3s" >}}
+{{< lfsquare animationSpeed="9.3s" >}}
 
 *_(hy·​a·​line – ˈhī-ə-lən : something (such as the clear atmosphere) that is transparent)_
 

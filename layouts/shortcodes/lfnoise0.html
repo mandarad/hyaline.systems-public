@@ -1,0 +1,64 @@
+{{/*
+  Shortcode to generate a non-smooth random wave animation using SVG and CSS.
+
+  Usage:
+  {{< nonsmooth-random-wave >}}
+  {{< nonsmooth-random-wave animationSpeed="30s" strokeColor="#5063A8" strokeWidth="5" >}}
+
+  Parameters:
+  - animationSpeed: The speed of the non-smooth random wave animation. Default is "30s".
+  - strokeColor: The color of the non-smooth random wave. Default is "#5063A8".
+  - strokeWidth: The thickness of the non-smooth random wave. Default is "5".
+*/}}
+
+{{ $animationSpeed := .Get "animationSpeed" | default "30s" }}
+{{ $strokeColor := .Get "strokeColor" | default "#5063A8" }}
+{{ $strokeWidth := .Get "strokeWidth" | default "5" }}
+{{ $uniqueID := (printf "nonsmoothrandomwave-%d" (now.UnixNano)) }}
+
+<style>
+#{{ $uniqueID }} .nonsmooth-random-wave-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+#{{ $uniqueID }} .nonsmooth-random-wave-wrapper {
+  display: flex;
+  width: 200%;
+  animation: move-nonsmooth-random-wave-{{ $uniqueID }} {{ $animationSpeed }} linear infinite;
+}
+
+#{{ $uniqueID }} .nonsmooth-random-wave {
+  width: 50%;
+}
+
+#{{ $uniqueID }} .nonsmooth-random-wave path {
+  stroke: {{ $strokeColor }} !important;
+  stroke-width: {{ $strokeWidth }};
+  stroke-dasharray: 10;
+  stroke-linecap: round;
+}
+
+@keyframes move-nonsmooth-random-wave-{{ $uniqueID }} {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+</style>
+
+<div id="{{ $uniqueID }}">
+  <div class="nonsmooth-random-wave-container">
+    <div class="nonsmooth-random-wave-wrapper">
+      <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
+        <path class="nonsmooth-random-wave" d="M0 100 L50 150 L100 50 L150 150 L200 50 L250 150 L300 50 L350 150 L400 50 L450 150 L500 50 L550 150 L600 50 L650 150 L700 50 L750 150 L800 50 L850 150 L900 50 L950 150 L1000 50 L1050 150 L1100 50 L1150 150 L1200 100" stroke="{{ $strokeColor }}" stroke-width="{{ $strokeWidth }}" fill="none"/>
+      </svg>
+      <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
+        <path class="nonsmooth-random-wave" d="M0 100 L50 150 L100 50 L150 150 L200 50 L250 150 L300 50 L350 150 L400 50 L450 150 L500 50 L550 150 L600 50 L650 150 L700 50 L750 150 L800 50 L850 150 L900 50 L950 150 L1000 50 L1050 150 L1100 50 L1150 150 L1200 100" stroke="{{ $strokeColor }}" stroke-width="{{ $strokeWidth }}" fill="none"/>
+      </svg>
+    </div>
+  </div>
+</div>
