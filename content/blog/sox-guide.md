@@ -406,7 +406,7 @@ echo "Processing complete."
 
 ## Part 5: Using SoX in SuperCollider
 
-I have made a [SuperCollider package](https://github.com/madskjeldgaard/sox.quark) that makes it easy to invoke the sox command from SuperCollider.
+If you are a user of [SuperCollider](https://supercollider.github.io/), I have made a convenience package to make it easy to run SoX programmatically from SuperCollider. It is available [here](https://github.com/madskjeldgaard/sox.quark).
 
 Open up SuperCollider and evaluate the following line of code to install it:
 ```javascript
