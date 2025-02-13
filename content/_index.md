@@ -4,10 +4,7 @@ date: 2022-01-01T00:00:00-00:00
 draft: false
 ---
 
-
-{{< lfsine animationSpeed="20s" >}}
-
-## hyaline.systems*
+# hyaline.systems*
 
 A creative technology studio based in Copenhagen, Denmark.
 
