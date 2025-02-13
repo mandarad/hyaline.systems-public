@@ -6,9 +6,10 @@
 {{ partialCached "head/fonts.html" . }}
 
 {{ $baseURL := .Site.BaseURL }}
+{{ $baseURL := strings.TrimSuffix "/" $baseURL }} <!-- Remove trailing / from baseURL -->
 {{ $title := .Title | default .Site.Title }}
 {{ $description := .Params.description | default .Site.Params.description }}
-{{ $image := first 1 (.Params.images | default (slice "/default-some.jpg")) }}
+{{ $image := index (first 1 (.Params.images | default (slice "/default-some.jpg"))) 0 }}
 {{ $author := .Params.author | default .Site.Author.name }}
 
 <!-- Open Graph meta tags -->
