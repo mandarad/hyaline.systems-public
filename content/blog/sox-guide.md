@@ -408,10 +408,6 @@ echo "Processing complete."
 
 If you are a user of [SuperCollider](https://supercollider.github.io/), I have made a convenience package to make it easy to run SoX programmatically from SuperCollider. It is available [here](https://github.com/madskjeldgaard/sox.quark).
 
-Open up SuperCollider and evaluate the following line of code to install it:
-```javascript
-Quarks.install("https://github.com/madskjeldgaard/sox.quark")
-```
 
 ### Convert single files from sclang
 
@@ -419,10 +415,10 @@ Here are some examples of simple commands you can run
 
 ```javascript
 // Normalize
-Sox.normalize("/Users/mads/tapedegrad1.wav", "/Users/mads/tapedegrad1_normalized.wav", (-0.1))
+Sox.normalize("in.wav", "out.wav", (-0.1))
 
 // Split by silence (using default values)
-Sox.splitBySilence("/Users/mads/reallylongfile.wav", "/Users/mads/partOfReallyLongFile.wav")
+Sox.splitBySilence("in.wav", "out.wav")
 
 // Run arbitrary sox command
 Sox.run("inFile.wav", "outFile.wav", "gain", "-3", "pad", "0", "3", "reverb");
@@ -439,7 +435,9 @@ var folderPath = PathName(folder);
 
 folderPath.filesDo{|file|
     var inFile = file;
-    var outFile = inFile.pathOnly +/+ PathName(inFile.fileNameWithoutExtension ++ "_normalized" ++ "." ++ inFile.extension);
+
+    var file=inFile.fileNameWithoutExtension ++ "_n" ++ "." ++ inFile.extension;
+    var outFile = inFile.pathOnly +/+ PathName(file);
     Sox.normalize(inFile.fullPath, outFile.fullPath);
 };
 
