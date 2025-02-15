@@ -9,8 +9,14 @@
 {{ $baseURL := strings.TrimSuffix "/" $baseURL }} <!-- Remove trailing / from baseURL -->
 {{ $title := .Title | default .Site.Title }}
 {{ $description := .Params.description | default .Site.Params.description }}
-{{ $image := index (first 1 (.Params.images | default (slice "/default-some.jpg"))) 0 }}
 {{ $author := .Params.author | default .Site.Author.name }}
+
+{{ $image := index (first 1 (.Params.images | default (slice "/default-some.jpg"))) 0 }}
+<!-- Check if the image file is a .jpg -->
+{{ if not (strings.HasSuffix $image ".jpg") }}
+  {{ errorf "The image file for og:image must be a .jpg file. Found: %s" $image }}
+{{ end }}
+
 
 <!-- Open Graph meta tags -->
 <meta property="og:title" content="{{ $title }}">
