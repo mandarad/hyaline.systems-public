@@ -5,8 +5,7 @@ theme = "hyaline-theme"
 
 pygmentsCodefences = true
 pygmentsStyle = "nord"
-description = "A creative technology studio based in Copenhagen, Denmark."
-
+description = "A tiny creative technology studio based in Copenhagen, Denmark."
 
 [params.social]
 # instagram = "https://instagram.com/madskjeld"
