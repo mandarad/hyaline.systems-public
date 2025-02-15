@@ -44,3 +44,11 @@ weight = 2
 # Minify all output
 [minify]
 minifyOutput = true
+
+disableHTML = false
+disableCSS = false
+disableJS = false
+disableJSON = false
+disableSVG = false
+disableXML = false
+disableMedia = true
