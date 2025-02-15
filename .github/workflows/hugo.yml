@@ -58,7 +58,7 @@ jobs:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
         run: |
-          hugo --minify=true --gc --cleanDestinationDir --logLevel info
+          hugo --gc --cleanDestinationDir --logLevel info
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
