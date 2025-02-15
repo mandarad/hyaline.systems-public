@@ -101,7 +101,7 @@ And search for `showwaves`.
 
 #### Example
 
-{{< video src="pumpwaveform.mp4" >}}
+{{< video src="pumpwaveform" >}}
 
 #### Usage
 Save the following script in a file named `audio2videowaveform.sh` and make it executable using `chmod +x audio2videowaveform.sh`.
@@ -225,7 +225,7 @@ And search for `showspectrum`.
 
 <!-- {{< simpleaudioplayer title="pump.mp3" url="/audio/pump.mp3">}} -->
 
-{{< video src="pump.mp4" >}}
+{{< video src="pump" >}}
 
 #### Usage
 
@@ -344,7 +344,7 @@ This Bash script combines an image and an audio file into a video using ffmpeg. 
 
 #### Example
 
-{{< video src="fountain-image.mp4" >}}
+{{< video src="fountain-image" >}}
 
 #### Usage
 
