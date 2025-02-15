@@ -55,10 +55,10 @@ jobs:
 
       - name: Build with Hugo
         # env:
-          # HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
-          # HUGO_ENVIRONMENT: production
+        #   HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+        #   HUGO_ENVIRONMENT: production
         run: |
-          hugo --gc --cleanDestinationDir --logLevel info
+          hugo --minify --gc --cleanDestinationDir --logLevel info
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
