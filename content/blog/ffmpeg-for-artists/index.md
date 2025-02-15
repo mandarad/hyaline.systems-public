@@ -7,7 +7,7 @@ authorlink = "https://madskjeldgaard.dk"
 tags = ['ffmpeg', 'guide', 'audioprocessing', 'bash', 'cli', 'video']
 toc = true
 description = "A guide to using ffmpeg for artists. ffmpeg is a free tool that allows you to create, convert and manipulate video, really quickly and without opening a heavy GUI-based program. You can script it to make full use of it's power and convert folders of files for example. The following is a cookbook of handy examples I myself use to easily create videos for social media, websites, etcetera – mostly from a source material of audio files and/or photos. I hope you find it useful."
-images = ["/ffmpeg-spectrum.png"]
+images = ["/ffmpeg-spectrum.jng"]
 +++
 
 ## Part 0: About this guide
