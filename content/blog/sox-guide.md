@@ -449,5 +449,7 @@ folderPath.filesDo{|file|
 ## Where to go from here?
 I would highly encourage you to go back and read the SoX manual (`man sox`, remember?) because there really is a plethora of fun and useful things you can do with SoX in a for-loop.
 
+If you want to mess with video on the commandline, we have a [guide for that as well](/blog/ffmpeg-for-artists).
+
 
 {{< kofi >}}

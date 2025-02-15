@@ -1,0 +1,6 @@
+[submodule "themes/hugo-audio"]
+	path = themes/hugo-audio
+	url = git@github.com:madskjeldgaard/hugo-audio.git
+[submodule "themes/hugo-video"]
+	path = themes/hugo-video
+	url = https://github.com/martignoni/hugo-video.git

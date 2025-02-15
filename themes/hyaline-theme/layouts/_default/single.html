@@ -39,17 +39,14 @@
       post */}}
       {{ with .Site.Params.siteSourceCode }}
       {{ with $.File }}
-      <a class="no-animation" href="{{ $.Site.Params.siteSourceCode }}/edit/main/content/{{ .Path }}">✏️ click here to edit this
-        post</a>.
+      <a class="no-animation" href="{{ $.Site.Params.siteSourceCode }}/edit/main/content/{{ .Path }}">✏️ edit</a>.
       {{ end }}
       {{ end }}
     </p>
 
-    <br>
-
     {{/* If the user has defined an openingParagraph in the front matter, display it here. */}}
     {{ with .Params.description }}
-    <p>
+    <p class="description">
       <i>{{ . }}</i>
     </p>
     {{ end }}

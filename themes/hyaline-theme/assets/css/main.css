@@ -193,6 +193,10 @@ code span {
   text-wrap: wrap;
 }
 
+code {
+  background-color: var(--bg-color2);
+}
+
 div.highlight {
   text-wrap: wrap;
   /* inline-size: max-content; */
@@ -275,6 +279,10 @@ pre {
   padding: 10px;
   line-height: 1.0;
   font-size: 0.8em;
+}
+
+.description {
+  font-size: 1.125em;
 }
 
 /* Responsive menu (optional) */

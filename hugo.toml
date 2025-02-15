@@ -1,7 +1,7 @@
 baseURL = 'https://hyaline.systems/'
 languageCode = 'en-us'
 title = 'hyaline.systems'
-theme = "hyaline-theme"
+theme = ["hugo-video","hyaline-theme", "hugo-audio"]
 
 pygmentsCodefences = true
 pygmentsStyle = "nord"
