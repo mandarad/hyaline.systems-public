@@ -1,5 +1,5 @@
 +++
-title = 'ffmpeg for artists: A cookbook for audio and video processing on the command line – with examples!'
+title = 'ffmpeg for Artists: A Cookbook for Audio and Video Processing on the Command Line ... with Examples!'
 date = 2025-02-15
 draft = false 
 author = "Mads Kjeldgaard"

@@ -1,0 +1,66 @@
+{{- $image := .Get "image" -}}
+{{- $imagePath := printf "/%s" $image -}}
+
+<div id="coin-container-{{ .Ordinal }}" style="width: 100%; height: 400px; position: relative;">
+    <canvas id="coin-canvas-{{ .Ordinal }}"></canvas>
+</div>
+
+<script type="module">
+    import * as THREE from './js/three.module.min.js';
+    import { OrbitControls } from './js/OrbitControls.js';
+
+    const container = document.getElementById('coin-container-{{ .Ordinal }}');
+    const canvas = document.getElementById('coin-canvas-{{ .Ordinal }}');
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.9;
+    controls.enableZoom = true;
+
+    const textureLoader = new THREE.TextureLoader();
+    const texture = textureLoader.load('{{ $imagePath }}');
+
+    const geometry = new THREE.CylinderGeometry(1, 1, 0.3, 32);
+    const material = new THREE.MeshBasicMaterial({ map: texture });
+    const coin = new THREE.Mesh(geometry, material);
+    scene.add(coin);
+
+    const ambientLight = new THREE.AmbientLight(0x404040);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+    pointLight.position.set(10, 10, 10);
+    scene.add(pointLight);
+
+    camera.position.z = 3;
+
+    const animate = function () {
+        requestAnimationFrame(animate);
+
+        coin.rotation.x += 0.02;
+        coin.rotation.y += 0.01;
+
+        // Randomly move the coin
+        coin.position.x += (Math.random() - 0.5) * 0.01;
+        coin.position.y += (Math.random() - 0.5) * 0.01;
+
+        controls.update();
+
+        renderer.render(scene, camera);
+    };
+
+    animate();
+
+    window.addEventListener('resize', () => {
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+    });
+</script>
