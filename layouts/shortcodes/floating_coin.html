@@ -7,7 +7,7 @@
 
 <script type="module">
     import * as THREE from './js/three.module.min.js';
-    import { OrbitControls } from './js/OrbitControls.js';
+    {{/* import { OrbitControls } from './js/OrbitControls.js'; */}}
 
     const container = document.getElementById('coin-container-{{ .Ordinal }}');
     const canvas = document.getElementById('coin-canvas-{{ .Ordinal }}');
@@ -17,10 +17,10 @@
     const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
 
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.9;
-    controls.enableZoom = true;
+    {{/* const controls = new OrbitControls(camera, renderer.domElement); */}}
+    {{/* controls.enableDamping = true; */}}
+    {{/* controls.dampingFactor = 0.9; */}}
+    {{/* controls.enableZoom = true; */}}
 
     // Load the texture
     const textureLoader = new THREE.TextureLoader();
@@ -94,7 +94,7 @@
                 coin.position.y += (Math.random() - 0.5) * 0.001;
 
                 // Update controls and render
-                controls.update();
+                {{/* controls.update(); */}}
                 renderer.render(scene, camera);
             };
 
