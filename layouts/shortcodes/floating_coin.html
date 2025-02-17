@@ -22,40 +22,91 @@
     controls.dampingFactor = 0.9;
     controls.enableZoom = true;
 
+    // Load the texture
     const textureLoader = new THREE.TextureLoader();
-    const texture = textureLoader.load('{{ $imagePath }}');
+    textureLoader.load(
+        '{{ $imagePath }}',
+        function (texture) {
+            {{/* console.log('Texture loaded successfully:', texture); */}}
 
-    const geometry = new THREE.CylinderGeometry(1, 1, 0.3, 32);
-    const material = new THREE.MeshBasicMaterial({ map: texture });
-    const coin = new THREE.Mesh(geometry, material);
-    scene.add(coin);
+            // Create the coin geometry
+            const geometry = new THREE.CylinderGeometry(1, 1, 0.3, 32, 32);
 
-    const ambientLight = new THREE.AmbientLight(0x404040);
-    scene.add(ambientLight);
+            // Create a material with the texture
+            const material = new THREE.MeshStandardMaterial({
+                map: texture,
+                metalness: 0.9,
+                roughness: 0.1,
+                side: THREE.DoubleSide, // Ensure both sides of the coin are visible
+            });
 
-    const pointLight = new THREE.PointLight(0xffffff, 1, 100);
-    pointLight.position.set(10, 10, 10);
-    scene.add(pointLight);
+            const coin = new THREE.Mesh(geometry, material);
+            scene.add(coin);
 
-    camera.position.z = 3;
+            // Add lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 10.9); // Increase intensity
+            scene.add(ambientLight);
 
-    const animate = function () {
-        requestAnimationFrame(animate);
+            const pointLight = new THREE.PointLight(0xffffff, 9.5, 100); // Increase intensity
+            pointLight.position.set(10, 0, 0);
+            scene.add(pointLight);
 
-        coin.rotation.x += 0.02;
-        coin.rotation.y += 0.01;
+            // Add an additional light
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            directionalLight.position.set(-100, 10, 10);
+            scene.add(directionalLight);
 
-        // Randomly move the coin
-        coin.position.x += (Math.random() - 0.5) * 0.01;
-        coin.position.y += (Math.random() - 0.5) * 0.01;
+            camera.position.z = 2;
 
-        controls.update();
+            // Store the original vertex positions for the wobbly effect
+            const originalVertices = geometry.attributes.position.array.slice();
+            const time = { value: 0 };
 
-        renderer.render(scene, camera);
-    };
+            const animate = function () {
+                requestAnimationFrame(animate);
 
-    animate();
+                // Update time for the wobbly effect
+                time.value += 0.05;
 
+                // Modify the vertices to create a wobbly effect
+                const vertices = geometry.attributes.position.array;
+                for (let i = 0; i < vertices.length; i += 3) {
+                    const x = originalVertices[i];
+                    const y = originalVertices[i + 1];
+                    const z = originalVertices[i + 2];
+
+                    const amount = 0.09;
+
+                    // Create a wobbly effect using sine and cosine functions
+                    const wave = Math.sin(x * 5 + time.value) * Math.cos(y * 5 + time.value) * amount;
+                    vertices[i + 2] = z + wave; // Modify the z-coordinate
+                }
+
+                // Mark the geometry as needing an update
+                geometry.attributes.position.needsUpdate = true;
+
+                // Rotate the coin
+                coin.rotation.x += 0.002;
+                coin.rotation.y += 0.001;
+
+                // Randomly move the coin
+                coin.position.x += (Math.random() - 0.5) * 0.001;
+                coin.position.y += (Math.random() - 0.5) * 0.001;
+
+                // Update controls and render
+                controls.update();
+                renderer.render(scene, camera);
+            };
+
+            animate();
+        },
+        undefined,
+        function (error) {
+            console.error('An error occurred loading the texture:', error);
+        }
+    );
+
+    // Handle window resize
     window.addEventListener('resize', () => {
         const width = container.clientWidth;
         const height = container.clientHeight;

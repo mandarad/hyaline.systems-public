@@ -1,0 +1,23 @@
+{{- $postType := .Get "type" -}}
+{{- $posts := where .Site.RegularPages "Type" $postType -}}
+
+<table>
+  {{/* <thead> */}}
+  {{/*   <tr> */}}
+  {{/*     <th>Date</th> */}}
+  {{/*     <th>Title</th> */}}
+  {{/*   </tr> */}}
+  {{/* </thead> */}}
+  <tbody>
+    {{ range $posts }}
+
+    <tr>
+      <td><time datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>:</td>
+      <td><a href="{{ .RelPermalink }}">{{ .Title }}</a></td>
+      {{/* summary */}}
+      {{/* <td>{{ .Params.description }}</td> */}}
+
+    </tr>
+    {{ end }}
+  </tbody>
+</table>
