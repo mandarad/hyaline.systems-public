@@ -19,6 +19,8 @@ home = ["html", "rss"]
 # Site parameters
 [params]
 
+email = "hi@hyaline.systems"
+
 siteSourceCode = "https://github.com/madskjeldgaard/hyaline.systems-public"
 
 # Sub title

@@ -2,8 +2,6 @@
 <div class="main-content">
   <article class="post">
 
-
-
     {{/* Title */}}
     <h1>{{ .Title }}</h1>
 
@@ -44,6 +42,7 @@
       {{ end }}
     </p>
 
+
     {{/* If the user has defined an openingParagraph in the front matter, display it here. */}}
     {{ with .Params.description }}
     <p class="description">
@@ -52,16 +51,37 @@
     {{ end }}
 
     <!-- Apply the no-animation class to the Table of Contents links -->
-      {{ if .Params.toc }}
+    {{ if .Params.toc }}
     <div class="toc no-animation">
       <b class="toc">Table of Contents</b>
       {{ .TableOfContents }}
     </div>
-      {{ end }}
+    {{ end }}
 
     {{/* The content of the post */}}
     {{ .Content }}
     {{/* {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }} */}}
+
+    {{ if .Params.prices }}
+      <h2>Purchase</h2>
+    {{ end }}
+
+    {{/* Show prices for different variations of product, if any are defined in "prices" */}}
+    {{ with .Params.prices }}
+    <div class="prices">
+      {{/* <b>Prices</b> */}}
+      <ul>
+        {{ range . }}
+        <li>{{ . }}</li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+
+    {{/* Buy button */}}
+    {{ if .Params.prices }}
+    {{ partial "buy-button.html" . }}
+    {{ end }}
 
     {{/* tags */}}
     <p class="tags">

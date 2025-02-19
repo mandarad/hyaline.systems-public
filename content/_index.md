@@ -20,5 +20,7 @@ Or follow us on [mastodon](http://mastodon.social/@hyalinesystems@mastodon.socia
 
 {{< lfsquare animationSpeed="9.3s" >}}
 
+<!-- {{< kicad schematic="/TeensyHapticAudioPlayer.kicad_sch" width="100%" height="600px" >}} -->
+
 ## Blog
 {{< list_posts type="blog" >}}

@@ -1,0 +1,62 @@
+{{ define "main" }}
+<div class="main-content">
+  <article>
+    {{ .Content }}
+
+    <form action="mailto:buy@hyaline.systems" method="post" enctype="text/plain">
+      {{ range .Pages }}
+      <div class="product">
+        {{ $productlink := .Permalink }}
+        <h2><a href="{{ $productlink }}">{{ .Title }}</a></h2>
+        {{ with .Params.images }}
+        <a href="{{ $productlink }}">
+          <img src="{{ index . 0 }}" alt="{{ $.Title }}" class="product-image">
+        </a>
+        {{ end }}
+        <p>{{ .Params.description }}</p>
+        {{ with .Params.prices }}
+        <div class="prices">
+          <table>
+            <thead>
+              <tr>
+                <th>Price</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{ range . }}
+              <tr>
+                <td>{{ . }}</td>
+                <td><input type="number" name="quantity-{{ $.Title | urlize }}" min="0" value="0"></td>
+              </tr>
+              {{ end }}
+            </tbody>
+          </table>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+      <div class="order-details">
+        <h2>Order Details</h2>
+        <label for="firstname">First Name:</label><br>
+        <input type="text" id="firstname" name="firstname"><br><br>
+        <label for="lastname">Last Name:</label><br>
+        <input type="text" id="lastname" name="lastname"><br><br>
+        <label for="street">Street Address:</label><br>
+        <input type="text" id="street" name="street"><br><br>
+        <label for="city">City:</label><br>
+        <input type="text" id="city" name="city"><br><br>
+        <label for="postalcode">Postal Code:</label><br>
+        <input type="text" id="postalcode" name="postalcode"><br><br>
+        <label for="country">Country:</label><br>
+        <input type="text" id="country" name="country"><br><br>
+        <label for="phone">Phone Number:</label><br>
+        <input type="text" id="phone" name="phone"><br><br>
+        <label for="comments">Additional Comments:</label><br>
+        <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br><br>
+        <input class="button" type="submit" value="Submit Order">
+      </div>
+    </form>
+  </article>
+</div>
+{{ end }}
