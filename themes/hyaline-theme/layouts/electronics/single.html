@@ -22,6 +22,8 @@
     <p class="author">
       {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
       {{ $dateHuman := .Date | time.Format ":date_long" }}
+
+      {{ if $author }}
       💻 by
       {{ if $authorLink }}
       <a href="{{ $authorLink }}" class="no-animation">{{ $author }}</a>
@@ -30,6 +32,9 @@
       {{ end }}
 
       on
+
+      {{ end }}
+
       <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>.</i>
 
       {{/* Edit link */}}
@@ -63,7 +68,7 @@
     {{/* {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }} */}}
 
     {{ if .Params.prices }}
-      <h2>Purchase</h2>
+    <h2>Purchase</h2>
     {{ end }}
 
     {{/* Show prices for different variations of product, if any are defined in "prices" */}}

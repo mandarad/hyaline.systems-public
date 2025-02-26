@@ -3,7 +3,6 @@
   <article class="post">
 
 
-
     {{/* Title */}}
     <h1>{{ .Title }}</h1>
 
@@ -24,6 +23,8 @@
     <p class="author">
       {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
       {{ $dateHuman := .Date | time.Format ":date_long" }}
+
+      {{ if $author }}
       💻 by
       {{ if $authorLink }}
       <a href="{{ $authorLink }}" class="no-animation">{{ $author }}</a>
@@ -32,16 +33,28 @@
       {{ end }}
 
       on
-      <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>.</i>
 
-      {{/* Edit link */}}
-      {{/* This uses the .siteSourceCode parameter from the site, if there is one, to link to the source code of this
-      post */}}
-      {{ with .Site.Params.siteSourceCode }}
-      {{ with $.File }}
-      <a class="no-animation" href="{{ $.Site.Params.siteSourceCode }}/edit/main/content/{{ .Path }}">✏️ edit</a>.
       {{ end }}
-      {{ end }}
+
+      <p class="date">
+
+      {{ $dateHuman := .Date | time.Format "02-01-2006" }}
+        Published <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>.</i>
+
+        {{/* Last modification date */}}
+        {{ $lastModMachine := .Lastmod | time.Format "2006-01-02T15:04:05-07:00" }}
+      {{ $lastModHuman := .Lastmod | time.Format "02-01-2006" }}
+          Last modified <time datetime="{{ $lastModMachine }}">{{ $lastModHuman }}</time>.
+      </p>
+
+    {{/* Edit link */}}
+    {{/* This uses the .siteSourceCode parameter from the site, if there is one, to link to the source code of this
+    post */}}
+    {{ with .Site.Params.siteSourceCode }}
+    {{ with $.File }}
+    <a class="no-animation" href="{{ $.Site.Params.siteSourceCode }}/edit/main/content/{{ .Path }}">✏️ edit</a>.
+    {{ end }}
+    {{ end }}
     </p>
 
     {{/* If the user has defined an openingParagraph in the front matter, display it here. */}}
@@ -52,12 +65,12 @@
     {{ end }}
 
     <!-- Apply the no-animation class to the Table of Contents links -->
-      {{ if .Params.toc }}
+    {{ if .Params.toc }}
     <div class="toc no-animation">
       <b class="toc">Table of Contents</b>
       {{ .TableOfContents }}
     </div>
-      {{ end }}
+    {{ end }}
 
     {{/* The content of the post */}}
     {{ .Content }}
