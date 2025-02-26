@@ -1,0 +1,13 @@
+{{/* TODO: Support  multiple sources */}}
+{{/* // For more information, visit https://kicanvas.org/embedding/ */}}
+{{- $schematic := .Get "schematic" -}}
+{{- $width := .Get "width" | default "100%" -}}
+{{- $height := .Get "height" | default "600px" -}}
+<script type="module" src="/js/kicanvas.js"></script>
+
+
+{{/* <div id="kicanvas-container-{{ .Ordinal }}" style="width: {{ $width }}; height: {{ $height }}; position: relative;"> */}}
+{{/*   <canvas id="kicanvas-{{ .Ordinal }}"></canvas> */}}
+{{/* </div> */}}
+
+<kicanvas-embed src="{{$schematic}}" controls="full"></kicanvas-embed>

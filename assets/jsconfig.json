@@ -1,0 +1,10 @@
+{
+ "compilerOptions": {
+  "baseUrl": ".",
+  "paths": {
+   "*": [
+    "../themes/hyaline-theme/assets/*"
+   ]
+  }
+ }
+}
