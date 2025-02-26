@@ -424,6 +424,94 @@ fi
 echo "Executing: ${ffmpeg_command}"
 eval ${ffmpeg_command}
 ```
+### Convert video to different formats: 480p, 720p, 1080p, 4k
+
+This Bash script converts a video file to different resolutions using `ffmpeg`. It supports various options for input file, output file, and resolution.
+
+#### Usage
+
+Save the following script in a file named `convert_video_format.sh` and make it executable using `chmod +x convert_video_format.sh`.
+
+Then you can run the script with the following commands:
+
+```bash
+./convert_video_format.sh -i <input_file> -o <output_file> -r <resolution>
+```
+
+You can also use it in a for-loop to iterate over all video files in a folder and convert each to a specified resolution:
+
+```bash
+FORMAT="720p"
+for file in *.mp4; do 
+    ./convert_video_format.sh -i "$file" -o "${file%.mp4}_${FORMAT}.mp4" -r ${FORMAT}
+done
+```
+
+#### Script
+
+```bash
+#!/bin/bash
+
+# Convert video file to specified resolution using FFmpeg
+# Usage: convert_video_format.sh -i <input_file> -o <output_file> -r <resolution>
+
+# Function to display usage information
+usage() {
+    echo "Usage: $0 -i <input_file> -o <output_file> -r <resolution>"
+    echo "  -i  Input video file (required)"
+    echo "  -o  Output video file (required)"
+    echo "  -r  Resolution (required, options: 480p, 720p, 1080p, 4k)"
+    exit 1
+}
+
+# Parse command-line arguments
+while getopts ":i:o:r:" opt; do
+    case "${opt}" in
+        i)
+            input_file="${OPTARG}"
+            ;;
+        o)
+            output_file="${OPTARG}"
+            ;;
+        r)
+            resolution="${OPTARG}"
+            ;;
+        *)
+            echo "Error: Invalid option"
+            usage
+            ;;
+    esac
+done
+
+# Check if input file, output file, and resolution are provided
+if [ -z "${input_file}" ] || [ -z "${output_file}" ] || [ -z "${resolution}" ]; then
+    echo "Error: Input file, output file, and resolution are required."
+    usage
+fi
+
+# Set resolution options
+case "${resolution}" in
+    480p)
+        scale="scale=854:480"
+        ;;
+    720p)
+        scale="scale=1280:720"
+        ;;
+    1080p)
+        scale="scale=1920:1080"
+        ;;
+    4k)
+        scale="scale=3840:2160"
+        ;;
+    *)
+        echo "Error: Invalid resolution option"
+        usage
+        ;;
+esac
+
+# Run ffmpeg command
+ffmpeg -i "${input_file}" -vf "${scale}" -c:v libx264 -crf 23 -preset fast -c:a aac -b:a 320k "${output_file}" && echo "Video converted successfully: ${output_file}"
+```
 
 {{< lfsquare animationSpeed=37s >}}
 
