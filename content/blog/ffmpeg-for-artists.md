@@ -1,6 +1,7 @@
 +++
 title = 'ffmpeg for Artists: A Cookbook for Audio and Video Processing on the Command Line ... with Examples!'
 date = 2025-02-15
+lastmod = 2025-02-26
 draft = false 
 author = "Mads Kjeldgaard"
 authorlink = "https://madskjeldgaard.dk"
