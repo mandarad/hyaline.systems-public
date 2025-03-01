@@ -427,7 +427,7 @@ eval ${ffmpeg_command}
 ```
 ### Convert video to different formats: 480p, 720p, 1080p, 4k
 
-This Bash script converts a video file to different resolutions using `ffmpeg`. It supports various options for input file, output file, and resolution.
+This Bash script converts a video file to different resolutions/sizes using `ffmpeg`. It supports various options for input file, output file, and resolution. It performs a multi-pass encoding for better quality.
 
 #### Usage
 
@@ -458,15 +458,19 @@ done
 
 # Function to display usage information
 usage() {
-    echo "Usage: $0 -i <input_file> -o <output_file> -r <resolution>"
+    echo "Usage: $0 -i <input_file> -o <output_file> -r <resolution> -p <passes>"
     echo "  -i  Input video file (required)"
     echo "  -o  Output video file (required)"
     echo "  -r  Resolution (required, options: 480p, 720p, 1080p, 4k)"
+    echo "  -p  Number of passes (optional, default: 3)"
     exit 1
 }
 
+# Default number of passes
+passes=3
+
 # Parse command-line arguments
-while getopts ":i:o:r:" opt; do
+while getopts ":i:o:r:p:" opt; do
     case "${opt}" in
         i)
             input_file="${OPTARG}"
@@ -476,6 +480,9 @@ while getopts ":i:o:r:" opt; do
             ;;
         r)
             resolution="${OPTARG}"
+            ;;
+        p)
+            passes="${OPTARG}"
             ;;
         *)
             echo "Error: Invalid option"
@@ -510,8 +517,18 @@ case "${resolution}" in
         ;;
 esac
 
+target_bitrate=5000k
+audio_quality=384k
 # Run ffmpeg command
-ffmpeg -i "${input_file}" -vf "${scale}" -c:v libx264 -crf 23 -preset fast -c:a aac -b:a 320k "${output_file}" && echo "Video converted successfully: ${output_file}"
+# Some really great insight into some of the specifics here from
+# mastodon user claude: https://mastodon.social/@mathr@post.lurk.org/114070282269145205
+for (( pass=1; pass<=passes; pass++ )); do
+    if [ "$pass" -lt "$passes" ]; then
+        ffmpeg -y -i "${input_file}" -pix_fmt yuv420p -profile:v high -level:v 5.2 -movflags +faststart -vf "${scale}" -c:v libx264 -b:v "$target_bitrate" -c:a aac -b:a $audio_quality -pass "$pass" -f mp4 /dev/null
+    else
+        ffmpeg -i "${input_file}" -pix_fmt yuv420p -profile:v high -level:v 5.2 -movflags +faststart -vf "${scale}" -c:v libx264 -b:v "$target_bitrate" -c:a aac -b:a $audio_quality -pass "$pass" "${output_file}" && echo "Video converted successfully: ${output_file}"
+    fi
+done
 ```
 
 {{< lfsquare animationSpeed=37s >}}
