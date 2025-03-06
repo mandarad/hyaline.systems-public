@@ -4,3 +4,6 @@
 [submodule "themes/hugo-video"]
 	path = themes/hugo-video
 	url = https://github.com/madskjeldgaard/hugo-video
+[submodule "themes/hugo-email-shop"]
+	path = themes/hugo-email-shop
+	url = git@github.com:madskjeldgaard/hugo-email-shop.git

@@ -31,13 +31,11 @@
       {{ else }}
       {{ $author }}
       {{ end }}
-
-      on
-
       {{ end }}
 
-      <p class="date">
+      {{ if .Params.showDate | default true }}
 
+      <p class="date">
       {{ $dateHuman := .Date | time.Format "02-01-2006" }}
         Published <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>.</i>
 
@@ -46,15 +44,18 @@
       {{ $lastModHuman := .Lastmod | time.Format "02-01-2006" }}
           Last modified <time datetime="{{ $lastModMachine }}">{{ $lastModHuman }}</time>.
       </p>
+      {{end}}
 
     {{/* Edit link */}}
     {{/* This uses the .siteSourceCode parameter from the site, if there is one, to link to the source code of this
     post */}}
+    {{ if .Params.showEditLink | default true }}
     {{ with .Site.Params.siteSourceCode }}
     {{ with $.File }}
     <a class="no-animation" href="{{ $.Site.Params.siteSourceCode }}/edit/main/content/{{ .Path }}">✏️ edit</a>.
     {{ end }}
     {{ end }}
+  {{ end }}
     </p>
 
     {{/* If the user has defined an openingParagraph in the front matter, display it here. */}}

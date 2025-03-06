@@ -1,11 +1,12 @@
 baseURL = 'https://hyaline.systems/'
 languageCode = 'en-us'
 title = 'hyaline.systems'
-theme = ["hugo-video","hyaline-theme", "hugo-audio"]
+theme = ["hugo-video","hyaline-theme", "hugo-audio", "hugo-email-shop"]
 
 pygmentsCodefences = true
 pygmentsStyle = "nord"
 description = "A tiny creative technology studio based in Copenhagen, Denmark."
+
 
 [params.social]
 # instagram = "https://instagram.com/madskjeld"
@@ -29,6 +30,10 @@ subtitle = ''
 # Description
 description = ''
 
+purchaseInfo = "You can purchase our products by simply sending an email with the products you want to buy, the quantity and your shipping info, and we will get back to you with payment details :)"
+
+purchaseEmail = "hi@hyaline.systems"
+
 # Menu
 [[menu.main]]
 identifier = "hyaline.systems"
@@ -41,7 +46,6 @@ identifier = "blog"
 name       = "blog"
 url        = "/blog"
 weight = 2
-
 
 # Minify all output
 [minify]

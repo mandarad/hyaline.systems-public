@@ -1,3 +1,6 @@
+add_product:
+  hugo new product/product-$(date "+%Y-%m-%d").md
+
 build:
     hugo --minify=true --gc --cleanDestinationDir --logLevel info
 
