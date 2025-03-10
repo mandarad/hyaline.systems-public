@@ -1,0 +1,29 @@
+{{ $email := .Get "email" }}
+{{ $products := where .Site.RegularPages "Type" "product" }}
+
+<div class="shop">
+  <div class="product-grid">
+    {{ range $products }}
+    <div class="product-item">
+      <a href="{{ .Permalink }}">
+        <img src="{{ index .Params.images 0 | relURL }}" alt="{{ .Title }}">
+      </a>
+      <h3>{{ .Title }}</h3>
+      {{ if .Params.price }}
+      <p>Price: ${{ .Params.price }}</p>
+      {{ if gt .Params.stock 0 }}
+      <p>Stock: {{ .Params.stock }}</p>
+      <!-- <p>Quantity: <input type="number" id="product-{{ .Title | urlize }}" name="product-{{ .Title | urlize }}" min="0" placeholder="0"></p> -->
+      {{ else }}
+      <p>Out of Stock</p>
+      {{ end }}
+    {{ end }}
+
+      {{ if .Params.description }}
+      <p> {{ .Params.description }}</p>
+      {{ end }}
+
+    </div>
+    {{ end }}
+  </div>
+  </div>

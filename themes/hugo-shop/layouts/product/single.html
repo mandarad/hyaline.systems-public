@@ -1,0 +1,61 @@
+{{ define "main" }}
+<div class="main-content">
+  <article>
+    <div class="product">
+      <header>
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.images }}
+        {{ range . }}
+        <img src="{{ .|relURL }}" alt="product image" class="product-image">
+        {{ end }}
+        {{ end }}
+      </header>
+      <section>
+        {{ if .Params.description }}
+        <p> {{ .Params.description }}</p>
+        {{ end }}
+
+        {{ if .Params.repo }}
+        <a href="{{.Params.repo}}">Open source</a>
+        {{ end }}
+
+        {{ if .Params.price }}
+        <p>Price: {{ .Params.price }} {{ .Params.currency}} </p>
+
+        <p>Stock: {{ .Params.stock }}</p>
+
+        {{ if .Params.shipping }}
+        <p>Shipping: {{ .Params.shipping }}</p>
+        {{ end }}
+        {{ end }}
+
+      </section>
+    </div>
+
+    <section>
+      {{ .Content }}
+
+      <div class="purchase-info">
+        <h2>Purchase</h2>
+        {{with .Site.Params.purchaseInfo|default "Purchase this product by sending an email" }}
+        <p>{{.}}</p>
+        {{end}}
+
+        {{/* if there is an email, make it a button */}}
+        {{ with .Site.Params.purchaseEmail }}
+        {{ $email := . }}
+        <a href="mailto:{{ $email }}" class="button">Purchase</a>
+        {{ end }}
+
+      </div>
+
+
+
+      {{/* tags */}}
+      <p class="tags">
+        {{ range .Params.tags }} <a href="/tags/{{ . | urlize }}">#{{ . }}</a> {{ end }}
+      </p>
+    </section>
+  </article>
+</div>
+{{ end }}

@@ -6,8 +6,6 @@ showEditLink: false
 showDate: false
 ---
 
-hi:
-
 {{< shop >}}
 
 {{< purchaseinfo >}}

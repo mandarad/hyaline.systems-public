@@ -1,13 +1,16 @@
 ---
-title: "Hyaline Motor Controller Xl"
+title: "Hyaline Motor Controller XL"
 date: 2025-03-09T17:45:42+01:00
 draft: true
 price: 0.00
 images:
 - hyalinemotorcontrollerxl.jpg
-currency: €
-stock: 0
-shipping: "Free shipping worldwide."
+repo: https://github.com/hyaline-systems/Hyaline-Motor-Controller-XL
+#currency: €
+#stock: 0
+#shipping: "Free shipping worldwide."
+tags: ['electronics', 'art', 'kinetic', 'raspberrypipico']
+description: "Control motors using Raspberry Pi Pico (5v-15V, 4 DC motors or 2 stepper motors)."
 ---
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/X8X6RXV10)
@@ -49,6 +52,13 @@ Designed by [Mads Kjeldgaard](https://madskjeldgaard.dk) for [hyaline.systems](h
 
 - PWM chip: [PCA9685](https://www.nxp.com/docs/en/data-sheet/PCA9685.pdf)
 - Motor driver: [TB6612FNG](https://cdn.sparkfun.com/assets/0/1/b/b/3/TB6612FNG.pdf)
+
+
+## Videos
+
+{{< video src="motorcontrollerxl-demo1" >}}
+
+*A silly demo: Randomizing the motor speeds and directions to make some bells jingle*.
 
 ## Credits
 

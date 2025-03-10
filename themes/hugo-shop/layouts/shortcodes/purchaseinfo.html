@@ -1,0 +1,13 @@
+    <div class="purchase-info product">
+      <h2>Purchase</h2>
+    {{with .Site.Params.purchaseInfo|default "Purchase this product by sending an email" }}
+    <p>{{.}}</p>
+    {{end}}
+
+{{/* if there is an email, make it a button */}}
+    {{ with .Site.Params.purchaseEmail }}
+      {{ $email := . }}
+      <a href="mailto:{{ $email }}" class="button">Purchase</a>
+    {{ end }}
+
+    </div>
