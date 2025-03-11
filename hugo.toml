@@ -47,6 +47,14 @@ name       = "blog"
 url        = "/blog"
 weight = 2
 
+[[menu.main]]
+identifier = "rss"
+name       = "rss"
+url        = "/index.xml"
+weight = 3
+
+[[menu.main]]
+
 # Minify all output
 [minify]
 minifyOutput = true
