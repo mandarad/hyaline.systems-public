@@ -62,10 +62,10 @@ sudo apt-get install jackd2 jack-example-tools
 
 #### Arch based systems
 
-Using an AUR-helper like `yay`:
+Using pacman: 
 
 ```bash
-yay -S jack2 jack-example-tools
+pacman -S jack2 jack-example-tools
 ```
 
 ### Configuration file
