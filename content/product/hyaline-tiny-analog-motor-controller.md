@@ -1,16 +1,16 @@
 ---
 title: "Tiny Analog Motor Controller"
 date: 2025-03-09T17:45:42+01:00
-draft: true
+draft: false
 price: 0.00
 images:
-- hyalinemotorcontrollerxl.jpg
-repo: https://github.com/hyaline-systems/Hyaline-Motor-Controller-XL
+- tinyanalogmotorcontrollerrev2.jpg
+repo: https://codeberg.org/hyaline-systems/Tiny-Analog-Motor-Controller
 #currency: €
 #stock: 0
 #shipping: "Free shipping worldwide."
 tags: ['electronics', 'art', 'kinetic', '555']
-description: "Tiny, cheap motor controller board."
+description: "Simple, small and powerful analog motor controller."
 ---
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/X8X6RXV10)
@@ -21,20 +21,19 @@ Designed by [Mads Kjeldgaard](https://madskjeldgaard.dk) for [hyaline.systems](h
 
 ## Features
 
+- Easy to use: Just connect power at one end, a motor at the other end.
+- Power: 5-15V DC
+- Control speed using a potentiometer.
+- Hackable: Pins broken out to allow daisy chaining boards, or connecting circuitry in between the PWM signal and the motor gate (eg a button, an LDR or whatever).
+- Based on a 555 timer chip in astable mode.
 - 4 x M3 mounting holes
-- Completely [open source](https://github.com/hyaline-systems/Tiny-Analog-Motor-Controller).
+- Completely [open source](https://codeberg.org/hyaline-systems/Tiny-Analog-Motor-Controller).
 - Tiny (about the size of a matchbox)
 
 ## Datasheets
 
 - 555 chip: [LMC555](https://www.ti.com/lit/ds/symlink/lmc555.pdf)
 - Motor mosfet: [Infineon IRFS3806TRLPBF](https://eu.mouser.com/datasheet/2/196/Infineon_IRFS3806_DataSheet_v01_01_EN-3363385.pdf) (but any similar mosfet will do the job).
-
-## Videos
-
-{{< video src="motorcontrollerxl-demo1" >}}
-
-*A silly demo: Randomizing the motor speeds and directions to make some bells jingle*.
 
 ## Credits
 
