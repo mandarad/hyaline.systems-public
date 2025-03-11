@@ -1,7 +1,7 @@
 +++
 title = 'Linux tutorial: Starting an audio program after boot'
-date = 2025-03-06
-draft = true
+date = 2025-03-11
+draft = false
 author = "Mads Kjeldgaard"
 authorlink = "https://madskjeldgaard.dk"
 tags = ['linux', 'raspberrypi', 'tutorial', 'audioprocessing', 'bash', 'cli', 'systemd', 'jack', 'supercollider', 'puredata']
