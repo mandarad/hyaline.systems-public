@@ -5,10 +5,25 @@
   <div class="product-grid">
     {{ range $products }}
     <div class="product-item">
-      <a href="{{ .Permalink }}">
-        <img src="{{ index .Params.images 0 | relURL }}" alt="{{ .Title }}">
+
+      <figure>
+      {{ $images := .Params.images }}
+      {{ $image := resources.Get (index $images 0) }}
+      {{ if $image }}
+      {{ $resized := $image.Resize "400x" }}
+
+      {{/* If there is a coverlink parameter in the page front matter, wrap it in a link */}}
+
+      <a href="{{.RelPermalink}}">
+        <img class="post-image" src="{{ $resized.Permalink }}" alt="Cover image for {{ .Title }}">
       </a>
-      <h3>{{ .Title }}</h3>
+    {{ else }}
+      <img class="post-image" src="/path/to/default/image.jpg" alt="Cover image for {{ .Title }}">
+      {{ end }}
+    </figure>
+
+    <a href="{{.RelPermalink}}"><h3>{{ .Title }}</h3></a>
+
       {{ if .Params.price }}
       <p>Price: ${{ .Params.price }}</p>
       {{ if gt .Params.stock 0 }}
@@ -22,6 +37,9 @@
       {{ if .Params.description }}
       <p> {{ .Params.description }}</p>
       {{ end }}
+
+      {{/* Learn more button */}}
+      <a href="{{.RelPermalink}}" class="button">Learn more</a>
 
     </div>
     {{ end }}

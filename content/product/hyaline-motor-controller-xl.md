@@ -4,7 +4,7 @@ date: 2025-03-09T17:45:42+01:00
 draft: true
 price: 0.00
 images:
-- hyalinemotorcontrollerxl.jpg
+- /hyalinemotorcontrollerxl.jpg
 repo: https://github.com/hyaline-systems/Hyaline-Motor-Controller-XL
 #currency: €
 #stock: 0

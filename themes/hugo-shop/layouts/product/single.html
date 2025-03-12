@@ -4,11 +4,31 @@
     <div class="product">
       <header>
         <h1>{{ .Title }}</h1>
-        {{ with .Params.images }}
-        {{ range . }}
-        <img src="{{ .|relURL }}" alt="product image" class="product-image">
-        {{ end }}
-        {{ end }}
+        <figure>
+      {{ $images := .Params.images }}
+      {{ $image := resources.Get (index $images 0) }}
+      {{ if $image }}
+      {{ $resized := $image.Resize "800x" }}
+
+      {{/* If there is a coverlink parameter in the page front matter, wrap it in a link */}}
+
+      {{ if .Params.coverlink }}
+      <a href="{{ .Params.coverlink }}">
+        <img class="post-image" src="{{ $resized.Permalink }}" alt="Cover image for {{ .Title }}">
+      </a>
+      {{ else }}
+      <img class="post-image" src="{{ $resized.Permalink }}" alt="Cover image for {{ .Title }}">
+      {{ end }}
+      {{ else }}
+      <img class="post-image" src="/path/to/default/image.jpg" alt="Cover image for {{ .Title }}">
+      {{ end }}
+
+      {{/* If there is a caption for the photo in the caption-key of the page, use that: */}}
+      {{with $.Params.caption}}
+      <figcaption class="portfolio-single-cover-caption">{{ . }}</figcaption>
+      {{end}}
+
+    </figure>
       </header>
       <section>
         {{ if .Params.description }}

@@ -6,12 +6,30 @@
     {{/* Title */}}
     <h1>{{ .Title }}</h1>
 
-    {{/* If any images, embed them */}}
-    {{ with .Params.images }}
-    {{ range . }}
-    <img src="{{ . }}" alt="{{ . }}" class="post-image">
-    {{ end }}
-    {{ end }}
+    <figure>
+      {{ $images := .Params.images }}
+      {{ $image := resources.Get (index $images 0) }}
+      {{ if $image }}
+      {{ $resized := $image.Resize "800x" }}
+
+      {{/* If there is a coverlink parameter in the page front matter, wrap it in a link */}}
+
+      {{ if .Params.coverlink }}
+      <a href="{{ .Params.coverlink }}">
+        <img class="post-image" src="{{ $resized.Permalink }}" alt="Cover image for {{ .Title }}">
+      </a>
+      {{ else }}
+      <img class="post-image" src="{{ $resized.Permalink }}" alt="Cover image for {{ .Title }}">
+      {{ end }}
+      {{ end }}
+
+      {{/* If there is a caption for the photo in the caption-key of the page, use that: */}}
+      {{with $.Params.caption}}
+      <figcaption class="portfolio-single-cover-caption">{{ . }}</figcaption>
+      {{end}}
+
+    </figure>
+
 
     {{/* Author. Defined in front matter of post */}}
     {{/* If there is a link defined in authorlink, wrap it in that. */}}
@@ -35,24 +53,24 @@
       {{ if .Params.showDate | default true }}
 
       {{ $dateHuman := .Date | time.Format "02-01-2006" }}
-        Published <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>.</i>
+      Published <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>.</i>
 
-        {{/* Last modification date */}}
-        {{ $lastModMachine := .Lastmod | time.Format "2006-01-02T15:04:05-07:00" }}
+      {{/* Last modification date */}}
+      {{ $lastModMachine := .Lastmod | time.Format "2006-01-02T15:04:05-07:00" }}
       {{ $lastModHuman := .Lastmod | time.Format "02-01-2006" }}
-          Last modified <time datetime="{{ $lastModMachine }}">{{ $lastModHuman }}</time>.
+      Last modified <time datetime="{{ $lastModMachine }}">{{ $lastModHuman }}</time>.
       {{end}}
 
-    {{/* Edit link */}}
-    {{/* This uses the .siteSourceCode parameter from the site, if there is one, to link to the source code of this
-    post */}}
-    {{ if .Params.showEditLink | default true }}
-    {{ with .Site.Params.siteSourceCode }}
-    {{ with $.File }}
-    <a class="no-animation" href="{{ $.Site.Params.siteSourceCode }}/edit/main/content/{{ .Path }}">✏️ edit</a>.
-    {{ end }}
-    {{ end }}
-  {{ end }}
+      {{/* Edit link */}}
+      {{/* This uses the .siteSourceCode parameter from the site, if there is one, to link to the source code of this
+      post */}}
+      {{ if .Params.showEditLink | default true }}
+      {{ with .Site.Params.siteSourceCode }}
+      {{ with $.File }}
+      <a class="no-animation" href="{{ $.Site.Params.siteSourceCode }}/edit/main/content/{{ .Path }}">✏️ edit</a>.
+      {{ end }}
+      {{ end }}
+      {{ end }}
     </p>
 
     {{/* If the user has defined an openingParagraph in the front matter, display it here. */}}
