@@ -8,6 +8,18 @@ pygmentsStyle = "nord"
 description = "A tiny creative technology studio based in Copenhagen, Denmark."
 
 
+# Add links to the footer
+# Format: [[params.footerLinks]]
+
+[[params.footerLinks]]
+title = "📟 Open Source Hardware"
+url = "https://codeberg.org/hyaline-systems"
+
+[[params.footerLinks]]
+title = "madskjeldgaard.dk"
+url = "https://madskjeldgaard.dk"
+
+
 [params.social]
 # instagram = "https://instagram.com/madskjeld"
 mastodon = "https://mastodon.social/@hyalinesystems"

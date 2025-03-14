@@ -378,6 +378,21 @@ td {
 }
 
 
+ul {
+  padding-left: 1em;
+}
+
+ul li {
+  padding: 0.5em;
+}
+
+ul.footer-links-list{
+  display: flex;
+  justify-content: center;
+
+  list-style-type: none;
+}
+
 /* Responsive menu (optional) */
 @media (max-width: 768px) {
   .menu ul {

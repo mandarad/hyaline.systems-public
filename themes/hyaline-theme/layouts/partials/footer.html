@@ -4,7 +4,6 @@
   {{ if .Site.Params.footerText }}
   <p>{{ .Site.Params.footerText }}</p>
   {{ end }}
-
   <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All Rights Reserved.</p>
   <p><a href="https://github.com/madskjeldgaard/hyaline.systems-public" target="_blank" rel="noopener">Open source web design by Mads Kjeldgaard</a>.
   </p>
@@ -21,4 +20,14 @@
     <a href="{{ . }}" target="_blank" rel="noopener">Follow on Mastodon</a>
   </p>
   {{ end -}}
+
+  {{ if .Site.Params.footerLinks }}
+  <ul class="footer-links-list">
+    {{ range .Site.Params.footerLinks }}
+    <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+
+
 </div>
