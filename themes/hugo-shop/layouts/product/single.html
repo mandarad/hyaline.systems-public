@@ -8,9 +8,8 @@
         {{ if .Params.description }}
           <p class="product-description"> {{ .Params.description }}</p>
         {{ end }}
-
-
         <figure>
+
       {{ $images := .Params.images }}
       {{ $image := resources.Get (index $images 0) }}
       {{ if $image }}

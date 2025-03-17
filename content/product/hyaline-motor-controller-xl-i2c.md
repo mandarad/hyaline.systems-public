@@ -56,7 +56,10 @@ Designed by [Mads Kjeldgaard](https://madskjeldgaard.dk) for [hyaline.systems](h
 
 ## Videos
 
+{{< youtube tbr1sPiec30 >}}
+
 {{< video src="motorcontrollerxl-demo1" >}}
+
 
 *A silly demo: Randomizing the motor speeds and directions to make some bells jingle*.
 
