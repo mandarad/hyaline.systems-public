@@ -60,10 +60,22 @@ url        = "/blog"
 weight = 2
 
 [[menu.main]]
+identifier = "things"
+name       = "things"
+url        = "/things"
+weight = 3
+
+[[menu.main]]
+identifier = "mastodon"
+name       = "mastodon"
+url        = "https://mastodon.social/@hyalinesystems"
+weight = 4
+
+[[menu.main]]
 identifier = "rss"
 name       = "rss"
 url        = "/index.xml"
-weight = 3
+weight = 5
 
 [[menu.main]]
 

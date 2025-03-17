@@ -1,11 +1,11 @@
 ---
-title: "Hyaline Motor Controller XL"
+title: "Hyaline Motor Controller XL i2c"
 date: 2025-03-09T17:45:42+01:00
-draft: true
+draft: false
 price: 0.00
 images:
 - /hyalinemotorcontrollerxl.jpg
-repo: https://github.com/hyaline-systems/Hyaline-Motor-Controller-XL
+repo: https://codeberg.org/hyaline-systems/Motor-Controller-XL-i2c
 #currency: €
 #stock: 0
 #shipping: "Free shipping worldwide."
@@ -43,9 +43,9 @@ Designed by [Mads Kjeldgaard](https://madskjeldgaard.dk) for [hyaline.systems](h
     - Reverse polarity protection
     - Onboard 5V regulator – the board only needs one power source to power both motors and the microcontroller board.
     - Power outputs for 3.3V, 5V and the motor power supply (after reverse polarity protection circuitry).
-- Completely [open source](https://github.com/hyaline-systems/Hyaline-Motor-Controller-XL).
+- Completely [open source](https://codeberg.org/hyaline-systems/Motor-Controller-XL-i2c).
 - 4 x M3 mounting holes
-- Includes [software examples](https://github.com/hyaline-systems/Hyaline-Motor-Controller-XL/tree/main/software/examples).
+- Includes [software examples](https://codeberg.org/hyaline-systems/Motor-Controller-XL-i2c/src/branch/main/software/examples).
 - Small (59.07 mm x 76.33 mm)
 
 ## Datasheets

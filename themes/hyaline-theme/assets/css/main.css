@@ -308,46 +308,7 @@ pre {
   background-color: var(--glow-color);
 }
 
-.product {
-  border: 3px solid var(--border-color);
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
-.product-image {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-.prices ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.prices li {
-  margin-bottom: 10px;
-}
-
-.order-details {
-  margin-top: 20px;
-}
-
-.order-details label {
-  font-weight: bold;
-}
-
-.order-details input[type="text"],
-.order-details textarea {
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.order-details input[type="submit"]:hover {
-  background-color: var(--secondaryColor);
-}
 
 input {
   padding: 10px;
@@ -383,30 +344,48 @@ ul {
 }
 
 ul li {
-  padding: 0.5em;
+  padding: 0.125em 0;
 }
 
-ul.footer-links-list{
+ul.footer-links-list {
   display: flex;
   justify-content: center;
 
   list-style-type: none;
 }
 
-/* Responsive menu (optional) */
+.menu {
+  display: flex;
+  justify-content: center;
+}
+
+/* Add styles for the hamburger menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 1em;
+}
+
+.hamburger div {
+  width: 30px;
+  height: 3px;
+  background-color: var(--menu-text-color);
+  margin: 5px auto;
+  transition: 0.4s;
+}
+/* Show the hamburger menu on small screens */
 @media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
   .menu ul {
+    display: none;
     flex-direction: column;
-    /* Stack menu items vertically on small screens */
   }
 
-  .menu li {
-    margin: 5px 0;
-    /* Adjust margin for vertical layout */
-  }
-
-  .menu a {
-    text-align: center;
-    /* Center-align text on small screens */
+  .menu ul.active {
+    display: flex;
   }
 }

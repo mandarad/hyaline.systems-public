@@ -9,7 +9,7 @@ currency: €
 stock: 2
 shipping: "Free shipping worldwide."
 description: "Vibration motor controller and high quality DAC for the Teensy 4.0."
-repo: "https://github.com/hyaline-systems/Teensy-Haptic-Audio-Player"
+repo: "https://codeberg.org/hyaline-systems/Teensy-Haptic-Audio-Player"
 tags: ['electronics', 'audio', 'haptic', 'teensy']
 ---
 
@@ -36,4 +36,4 @@ The whole thing is open source and hackable and is designed to be used for many 
 
 ## Software
 
-See [software/examples](https://github.com/hyaline-systems/Teensy-Haptic-Audio-Player/tree/main/software/examples) for example code using Arduino.
+See [software/examples](https://codeberg.org/hyaline-systems/Teensy-Haptic-Audio-Player/src/branch/main/software/examples) for example code using Arduino.

@@ -4,6 +4,12 @@
     <div class="product">
       <header>
         <h1>{{ .Title }}</h1>
+
+        {{ if .Params.description }}
+          <p class="product-description"> {{ .Params.description }}</p>
+        {{ end }}
+
+
         <figure>
       {{ $images := .Params.images }}
       {{ $image := resources.Get (index $images 0) }}
@@ -27,14 +33,8 @@
       {{with $.Params.caption}}
       <figcaption class="portfolio-single-cover-caption">{{ . }}</figcaption>
       {{end}}
-
     </figure>
-      </header>
       <section>
-        {{ if .Params.description }}
-        <p> {{ .Params.description }}</p>
-        {{ end }}
-
         {{ if .Params.repo }}
         <a href="{{.Params.repo}}">Open source</a>
         {{ end }}
@@ -49,6 +49,7 @@
         {{ end }}
         {{ end }}
 
+      </header>
       </section>
     </div>
 

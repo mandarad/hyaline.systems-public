@@ -6,48 +6,59 @@ Renders a menu for the given menu ID.
 
 @example: {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
 */}}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const hamburger = document.querySelector(".hamburger");
+    const menu = document.querySelector(".menu ul");
+
+    hamburger.addEventListener("click", function() {
+      menu.classList.toggle("active");
+    });
+  });
+</script>
+
+  <div class="hamburger" onclick="this.nextElementSibling.classList.toggle('active');">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
 
 <nav class="menu">
-{{- $page := .page }}
-{{- $menuID := .menuID }}
-
-{{- with index site.Menus $menuID }}
+  {{- $page := .page }}
+  {{- $menuID := .menuID }}
+  {{- with index site.Menus $menuID }}
   <nav>
     <ul>
       {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
     </ul>
   </nav>
-{{- end }}
+  {{- end }}
 
-{{- define "partials/inline/menu/walk.html" }}
+  {{- define "partials/inline/menu/walk.html" }}
   {{- $page := .page }}
   {{- range .menuEntries }}
-    {{- $attrs := dict "href" .URL }}
-    {{- if $page.IsMenuCurrent .Menu . }}
-      {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
-    {{- else if $page.HasMenuCurrent .Menu .}}
-      {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
-    {{- end }}
-    {{- $name := .Name }}
-    {{- with .Identifier }}
-      {{- with T . }}
-        {{- $name = . }}
-      {{- end }}
-    {{- end }}
-    <li>
-      <a
-        {{- range $k, $v := $attrs }}
-          {{- with $v }}
-            {{- printf " %s=%q" $k $v | safeHTMLAttr }}
-          {{- end }}
-        {{- end -}}
-      >{{ $name }}</a>
-      {{- with .Children }}
-        <ul>
-          {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
-        </ul>
-      {{- end }}
-    </li>
+  {{- $attrs := dict "href" .URL }}
+  {{- if $page.IsMenuCurrent .Menu . }}
+  {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
+  {{- else if $page.HasMenuCurrent .Menu .}}
+  {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
   {{- end }}
-{{- end }}
+  {{- $name := .Name }}
+  {{- with .Identifier }}
+  {{- with T . }}
+  {{- $name = . }}
+  {{- end }}
+  {{- end }}
+  <li>
+    <a {{- range $k, $v :=$attrs }} {{- with $v }} {{- printf " %s=%q" $k $v | safeHTMLAttr }} {{- end }} {{- end -}}>{{
+      $name }}</a>
+    {{- with .Children }}
+    <ul>
+      {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+    </ul>
+    {{- end }}
+  </li>
+  {{- end }}
+  {{- end }}
 </nav>
