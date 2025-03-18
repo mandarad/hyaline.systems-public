@@ -1,6 +1,6 @@
 ---
 title: "things"
-draft: true
+draft: false
 date: 2025-02-19
 showEditLink: false
 showDate: false
