@@ -1,7 +1,7 @@
 ---
 title: "Teensy Haptic Audio Player"
 date: 2025-03-06T16:12:21+01:00
-draft: true
+draft: false
 images:
 - teensyhapticaudioplayer.jpg
 #price: 8.00
