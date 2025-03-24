@@ -30,6 +30,10 @@ Designed by [Mads Kjeldgaard](https://madskjeldgaard.dk) for [hyaline.systems](h
 - Completely [open source](https://codeberg.org/hyaline-systems/Tiny-Analog-Motor-Controller).
 - Tiny (about the size of a matchbox)
 
+## Videos
+
+{{< youtube 2x3-BIKj-YE >}}
+
 ## Datasheets
 
 - 555 chip: [LMC555](https://www.ti.com/lit/ds/symlink/lmc555.pdf)
