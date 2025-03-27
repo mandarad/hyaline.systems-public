@@ -40,7 +40,8 @@
   font-weight: bold;
 }
 
-.order-form input, .order-form textarea {
+.order-form input,
+.order-form textarea {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -66,7 +67,7 @@
   background-color: #0056b3;
 }
 
-.purchase-info{
+.purchase-info {
   margin-top: 20px;
   padding: 10px 30px 30px 30px;
   border: 2px solid #517FA8;
@@ -126,4 +127,15 @@
 
 .order-details input[type="submit"]:hover {
   background-color: var(--secondaryColor);
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+ul.product-list {
+  list-style-type: none;
+  padding: 0;
 }

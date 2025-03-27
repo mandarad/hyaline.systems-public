@@ -6,47 +6,47 @@
         <h1>{{ .Title }}</h1>
 
         {{ if .Params.description }}
-          <p class="product-description"> {{ .Params.description }}</p>
+        <p class="product-description"> {{ .Params.description }}</p>
         {{ end }}
         <figure>
 
-      {{ $images := .Params.images }}
-      {{ $image := resources.Get (index $images 0) }}
-      {{ if $image }}
-      {{ $resized := $image.Resize "800x" }}
+          {{ $images := .Params.images }}
+          {{ $image := resources.Get (index $images 0) }}
+          {{ if $image }}
+          {{ $resized := $image.Resize "800x" }}
 
-      {{/* If there is a coverlink parameter in the page front matter, wrap it in a link */}}
+          {{/* If there is a coverlink parameter in the page front matter, wrap it in a link */}}
 
-      {{ if .Params.coverlink }}
-      <a href="{{ .Params.coverlink }}">
-        <img class="post-image" src="{{ $resized.Permalink }}" alt="Cover image for {{ .Title }}">
-      </a>
-      {{ else }}
-      <img class="post-image" src="{{ $resized.Permalink }}" alt="Cover image for {{ .Title }}">
-      {{ end }}
-      {{ else }}
-      <img class="post-image" src="/path/to/default/image.jpg" alt="Cover image for {{ .Title }}">
-      {{ end }}
+          {{ if .Params.coverlink }}
+          <a href="{{ .Params.coverlink }}">
+            <img class="post-image" src="{{ $resized.Permalink }}" alt="Cover image for {{ .Title }}">
+          </a>
+          {{ else }}
+          <img class="post-image" src="{{ $resized.Permalink }}" alt="Cover image for {{ .Title }}">
+          {{ end }}
+          {{ else }}
+          <img class="post-image" src="/path/to/default/image.jpg" alt="Cover image for {{ .Title }}">
+          {{ end }}
 
-      {{/* If there is a caption for the photo in the caption-key of the page, use that: */}}
-      {{with $.Params.caption}}
-      <figcaption class="portfolio-single-cover-caption">{{ . }}</figcaption>
-      {{end}}
-    </figure>
-      <section>
-        {{ if .Params.repo }}
-        <a href="{{.Params.repo}}">Open source</a>
-        {{ end }}
+          {{/* If there is a caption for the photo in the caption-key of the page, use that: */}}
+          {{with $.Params.caption}}
+          <figcaption class="portfolio-single-cover-caption">{{ . }}</figcaption>
+          {{end}}
+        </figure>
+        <section>
+          {{ if .Params.repo }}
+          <a href="{{.Params.repo}}">Open source</a>
+          {{ end }}
 
-        {{ if .Params.price }}
-        <p>Price: {{ .Params.price }} {{ .Params.currency}} </p>
+          {{ if .Params.price }}
+          <p>Price: {{ .Params.price }} {{ .Params.currency}} </p>
 
-        <p>Stock: {{ .Params.stock }}</p>
+          <p>Stock: {{ .Params.stock }}</p>
 
-        {{ if .Params.shipping }}
-        <p>Shipping: {{ .Params.shipping }}</p>
-        {{ end }}
-        {{ end }}
+          {{ if .Params.shipping }}
+          <p>Shipping: {{ .Params.shipping }}</p>
+          {{ end }}
+          {{ end }}
 
       </header>
       </section>
@@ -69,13 +69,45 @@
 
       </div>
 
-
-
       {{/* tags */}}
       <p class="tags">
         {{ range .Params.tags }} <a href="/tags/{{ . | urlize }}">#{{ . }}</a> {{ end }}
       </p>
     </section>
   </article>
+
+
+
+
+
 </div>
+
+<div class="single-product-footer">
+{{/* List other products here as a list with images and links: */}}
+  <section class="related-products">
+    <h2>Other Products</h2>
+    <ul class="product-list">
+      {{ range .Site.RegularPages }}
+      {{ if eq .Type "product" }}
+      <li>
+        {{ $link := .Permalink }}
+        {{ $title := .Title }}
+        {{ $description := .Params.description }}
+        <a href="{{ $link }}">
+          {{ with .Params.images }}
+          {{ $image := resources.Get (index . 0) }}
+          {{ $resized := $image.Resize "800x" }}
+            <img src="{{ $resized.Permalink  }}" alt="{{ $title }}">
+          {{ end }}
+          <p>{{ $title }}</p>
+        </a>
+
+          <p>{{ $description }}</p>
+      </li>
+      {{ end }}
+      {{ end }}
+    </ul>
+  </section>
+</div>
+
 {{ end }}
