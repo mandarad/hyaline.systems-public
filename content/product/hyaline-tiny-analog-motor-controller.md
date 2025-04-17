@@ -2,12 +2,12 @@
 title: "Tiny Analog Motor Controller"
 date: 2025-03-09T17:45:42+01:00
 draft: false
-price: 0.00
+price: 10.00
 images:
 - tinyanalogmotorcontrollerrev2.jpg
 repo: https://codeberg.org/hyaline-systems/Tiny-Analog-Motor-Controller
 #currency: €
-#stock: 0
+#stock: 10
 #shipping: "Free shipping worldwide."
 tags: ['electronics', 'art', 'kinetic', '555']
 description: "Simple, small and powerful analog motor controller."
@@ -22,7 +22,7 @@ Designed by [Mads Kjeldgaard](https://madskjeldgaard.dk) for [hyaline.systems](h
 ## Features
 
 - Easy to use: Just connect power at one end, a motor at the other end.
-- Power: 5-15V DC
+- Power: 3-15V DC (in tests it works down to approximately 2.5v but at least 3V is recommended). Works nicely with batteries.
 - Control speed using a potentiometer.
 - Hackable: Pins broken out to allow daisy chaining boards, or connecting circuitry in between the PWM signal and the motor gate (eg a button, an LDR or whatever).
 - Based on a 555 timer chip in astable mode.
