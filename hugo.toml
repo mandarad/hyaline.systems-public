@@ -60,9 +60,9 @@ url        = "/blog"
 weight = 2
 
 [[menu.main]]
-identifier = "things"
-name       = "things"
-url        = "/things"
+identifier = "electronics"
+name       = "electronics"
+url        = "/electronics"
 weight = 3
 
 [[menu.main]]

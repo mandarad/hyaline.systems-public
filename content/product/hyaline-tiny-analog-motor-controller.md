@@ -2,7 +2,7 @@
 title: "Tiny Analog Motor Controller"
 date: 2025-03-09T17:45:42+01:00
 draft: false
-price: 10.00
+#price: 10.00
 images:
 - tinyanalogmotorcontrollerrev2.jpg
 repo: https://codeberg.org/hyaline-systems/Tiny-Analog-Motor-Controller
