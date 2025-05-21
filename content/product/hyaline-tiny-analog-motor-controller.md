@@ -4,7 +4,7 @@ date: 2025-03-09T17:45:42+01:00
 draft: false
 #price: 10.00
 images:
-- tinyanalogmotorcontrollerrev2.jpg
+- tinymotor.jpg
 repo: https://codeberg.org/hyaline-systems/Tiny-Analog-Motor-Controller
 #currency: €
 #stock: 10
@@ -32,6 +32,10 @@ Designed by [Mads Kjeldgaard](https://madskjeldgaard.dk) for [hyaline.systems](h
 - The PWM chip is configured for a small motor. To make it better for larger motors, change C1 to 100pf. 
 
 ## Videos
+
+{{< youtube 8T458q-4F3A >}}
+
+{{< masto link="https://social.ordinal.garden/@t36s/114431780934173209/embed" >}}
 
 {{< youtube 2x3-BIKj-YE >}}
 
