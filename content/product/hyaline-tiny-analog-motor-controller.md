@@ -22,14 +22,13 @@ Designed by [Mads Kjeldgaard](https://madskjeldgaard.dk) for [hyaline.systems](h
 ## Features
 
 - Easy to use: Just connect power at one end, a motor at the other end.
-- Power: 5-14V DC (Works best with 6-12 volts, depending on the motor). 
+- Power: 5-12V DC  
 - Control speed using a potentiometer.
 - Hackable: Pins broken out to allow daisy chaining boards, or connecting circuitry in between the PWM signal and the motor gate (eg a button, an LDR or whatever).
 - Based on a 555 timer chip in astable mode.
 - 4 x M3 mounting holes
 - Completely [open source](https://codeberg.org/hyaline-systems/Tiny-Analog-Motor-Controller).
 - Tiny (about the size of a matchbox)
-- The PWM chip is configured for a small motor. To make it better for larger motors, change C1 to 100pf. 
 
 ## Videos
 
