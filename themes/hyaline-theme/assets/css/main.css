@@ -321,23 +321,26 @@ input {
 }
 
 table {
-  padding: 0;
-  margin: 0;
+  padding: 1em;
 }
 
-th {
-  text-align: left;
-  padding: 0.5em;
-}
 
-th {
-  padding-left: 0;
-}
-
+table,
+th,
 td {
-  padding: 0.5em 0.5em 0.5em 0;
+  border: 2px solid var(--border-color);
+  font-size: 1.0em;
+  padding: 0.5rem 0.3rem;
+  border-collapse: collapse;
+  border-radius: 5px;
+  text-align: justify;
+  justify-content: left;
+  /* Add some padding to the table cells */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-wrap: wrap;
+  margin: 1em auto;
 }
-
 
 ul {
   padding-left: 1em;
@@ -374,6 +377,7 @@ ul.footer-links-list {
   margin: 5px auto;
   transition: 0.4s;
 }
+
 /* Show the hamburger menu on small screens */
 @media (max-width: 768px) {
   .hamburger {
