@@ -22,10 +22,11 @@ The list is completely open source and you can help make it better (see below)!
 
 | Name                                                                  | Description                      |
 | -------------                                                         | --------------                   |
-| [Aron Dahl](https://arondahl.com/newsletter)                          | Songwriter, composer, filmmaker |
+| [Aron Dahl](https://arondahl.com/newsletter)                          | Songwriter, composer, filmmaker  |
 | [Mads Kjeldgaard](https://madskjeldgaard.dk/newsletter/)              | Sound artist and composer        |
 | [Kristoffer Lislegaard](https://www.kristofferlislegaard.com/follow/) | Musician                         |
 | [Jenny Berger Myhre](https://app.keila.io/forms/nfrm_dj3jQmRJ)        | Multidisciplinary artist         |
+| [Søren Peter Mørch](https://darch.dk/newsletter)                      | Visualist and live coder         |
 
 
 ## Adding to the list
@@ -41,4 +42,5 @@ If you are an artist and you haven't already set up a newsletter, here are some 
 - [Brevo](https://www.brevo.com/) - Free for up to 300 emails per day and European with an extensive UI interface.
 - [Keila](https://www.keila.io/) - Open source and European. Bit more simple interface but supports Markdown.
 - [Buttondown](https://buttondown.com/)
+- [Kollektiv Email](https://kollektiv.email/)
 - [listmonk](https://listmonk.app/) - Open source and self-hostable. A very simple service.
