@@ -20,16 +20,17 @@ The list is completely open source and you can help make it better (see below)!
 
 ## The Directory
 
-| Name                                                                  | Description                     |
-| -------------                                                         | --------------                  |
-| [Aron Dahl](https://arondahl.com/newsletter)                          | Songwriter, composer, filmmaker |
-| [Mads Kjeldgaard](https://madskjeldgaard.dk/newsletter/)              | Sound artist and composer       |
-| [Kristoffer Lislegaard](https://www.kristofferlislegaard.com/follow/) | Musician                        |
-| [Jenny Berger Myhre](https://app.keila.io/forms/nfrm_dj3jQmRJ)        | Multidisciplinary artist        |
-| [Søren Peter Mørch](https://darch.dk/newsletter)                      | Visualist and live coder        |
-| [Raphaël Bastide](https://raphaelbastide.com/newsletter/)             | Music, netart, creative coding  |
-| [Stereolab]( https://warp.net/artists/stereolab) | avant-pop band from London |
-| [Trash Panda QC](https://mailchi.mp/e425aa129523/trash-panda-qc-mailing-list) | musician, DJ, video artist |
+| Name                                                                          | Description                     |
+| -------------                                                                 | --------------                  |
+| [Aron Dahl](https://arondahl.com/newsletter)                                  | Songwriter, composer, filmmaker |
+| [Mads Kjeldgaard](https://madskjeldgaard.dk/newsletter/)                      | Sound artist and composer       |
+| [Kristoffer Lislegaard](https://www.kristofferlislegaard.com/follow/)         | Musician                        |
+| [Jenny Berger Myhre](https://app.keila.io/forms/nfrm_dj3jQmRJ)                | Multidisciplinary artist        |
+| [Søren Peter Mørch](https://darch.dk/newsletter)                              | Visualist and live coder        |
+| [Raphaël Bastide](https://raphaelbastide.com/newsletter/)                     | Music, netart, creative coding  |
+| [Stereolab]( https://warp.net/artists/stereolab)                              | avant-pop band from London      |
+| [Trash Panda QC](https://mailchi.mp/e425aa129523/trash-panda-qc-mailing-list) | musician, DJ, video artist      |
+| [Infinity Bear Designs](https://www.infinitybeardesigns.com/)                 | Fiber artist, cross stitch      |
 
 
 ## Adding to the list
