@@ -31,6 +31,7 @@ The list is completely open source and you can help make it better (see below)!
 | [Raphaël Bastide](https://raphaelbastide.com/newsletter/)             | Music, netart, creative coding  |
 | [Stereolab]( https://warp.net/artists/stereolab) | avant-pop band from London |
 | [Trash Panda QC](https://mailchi.mp/e425aa129523/trash-panda-qc-mailing-list) | musician, DJ, video artist |
+| [Lime68k](https://buttondown.com/lime68k)                             | laptop musician & visual artist |
 
 
 ## Adding to the list
