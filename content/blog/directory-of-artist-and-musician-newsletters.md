@@ -46,6 +46,6 @@ If you are an artist and you haven't already set up a newsletter, here are some 
 
 - [Brevo](https://www.brevo.com/) - Free for up to 300 emails per day and European with an extensive UI interface.
 - [Keila](https://www.keila.io/) - Open source and European. Bit more simple interface but supports Markdown.
-- [Buttondown](https://buttondown.com/) Free for your first 100 subscribers. Markdown support. Archive function. US based.
+- [Buttondown](https://buttondown.com/) Free up to 100 subscribers. Markdown support. Archive and RSS function. US based.
 - [Kollektiv Email](https://kollektiv.email/) — Danish, collectively owned and operated.
 - [listmonk](https://listmonk.app/) - Open source and self-hostable. A very simple service.
