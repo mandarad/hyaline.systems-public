@@ -31,6 +31,7 @@ The list is completely open source and you can help make it better (see below)!
 | [Raphaël Bastide](https://raphaelbastide.com/newsletter/)                     | Music, netart, creative coding  |
 | [Stereolab](https://warp.net/artists/stereolab)                               | avant-pop band from London      |
 | [Trash Panda QC](https://mailchi.mp/e425aa129523/trash-panda-qc-mailing-list) | musician, DJ, video artist      |
+| [Lime68k](https://buttondown.com/lime68k)                                     | laptop musician & visual artist |
 | [Infinity Bear Designs](https://www.infinitybeardesigns.com/)                 | Fiber artist, cross stitch      |
 
 ## Adding to the list
@@ -45,6 +46,6 @@ If you are an artist and you haven't already set up a newsletter, here are some 
 
 - [Brevo](https://www.brevo.com/) - Free for up to 300 emails per day and European with an extensive UI interface.
 - [Keila](https://www.keila.io/) - Open source and European. Bit more simple interface but supports Markdown.
-- [Buttondown](https://buttondown.com/)
+- [Buttondown](https://buttondown.com/) Free up to 100 subscribers. Markdown support. Archive and RSS function. US based.
 - [Kollektiv Email](https://kollektiv.email/) — Danish, collectively owned and operated.
 - [listmonk](https://listmonk.app/) - Open source and self-hostable. A very simple service.
